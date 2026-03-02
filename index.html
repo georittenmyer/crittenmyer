@@ -21,7 +21,7 @@
         <meta property="og:url" content="https://crittenmyer.com" />
         <link rel="canonical" href="https://crittenmyer.com" />
         <link
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Montserrat:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap"
             rel="stylesheet"
         />
 
@@ -53,8 +53,8 @@
             body {
                 background: var(--bg);
                 color: var(--ink);
-                font-family: "DM Sans", sans-serif;
-                font-weight: 300;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 400;
                 overflow-x: hidden;
                 cursor: none;
             }
@@ -125,33 +125,35 @@
                 box-shadow: 0 1px 0 var(--rule);
             }
             .nav-logo {
-                font-family: "Playfair Display", serif;
                 display: flex;
-                flex-direction: column;
-                line-height: 1;
-                color: var(--white);
-                transition: color 0.4s;
-            }
-            nav.scrolled .nav-logo {
-                color: var(--ink);
+                align-items: baseline;
+                gap: 0.5rem;
+                text-decoration: none;
             }
             .nav-logo-chelsea {
-                font-size: 0.62rem;
-                letter-spacing: 0.45em;
+                font-family: "Playfair Display", serif;
+                font-size: 1.4rem;
+                font-style: italic;
+                font-weight: 900;
+                color: #fff;
+                letter-spacing: -0.01em;
+                line-height: 1;
+                transition: color 0.4s;
+            }
+            .nav-logo-rittenmyer {
+                font-family: "Montserrat", sans-serif;
+                font-size: 0.5rem;
+                font-weight: 500;
+                color: rgba(255, 255, 255, 0.75);
+                letter-spacing: 0.52em;
                 text-transform: uppercase;
-                color: var(--seafoam);
-                font-family: "DM Sans", sans-serif;
-                font-weight: 400;
                 transition: color 0.4s;
             }
             nav.scrolled .nav-logo-chelsea {
-                color: var(--teal);
+                color: var(--ink);
             }
-            .nav-logo-rittenmyer {
-                font-size: 1.35rem;
-                letter-spacing: 0.06em;
-                font-style: italic;
-                font-family: "Playfair Display", serif;
+            nav.scrolled .nav-logo-rittenmyer {
+                color: var(--ink-mid);
             }
             .nav-links {
                 display: flex;
@@ -162,9 +164,10 @@
                 font-size: 0.7rem;
                 letter-spacing: 0.22em;
                 text-transform: uppercase;
-                color: rgba(255, 255, 255, 0.75);
+                color: rgba(255, 255, 255, 0.8);
                 transition: color 0.2s;
-                font-weight: 400;
+                font-weight: 500;
+                font-family: "Montserrat", sans-serif;
             }
             nav.scrolled .nav-links a {
                 color: var(--ink-mid);
@@ -258,7 +261,8 @@
                 margin-bottom: 1.25rem;
                 opacity: 0;
                 animation: fadeUp 0.7s 0.4s forwards;
-                font-weight: 400;
+                font-weight: 500;
+                font-family: "Montserrat", sans-serif;
             }
             .hero-name {
                 display: flex;
@@ -271,15 +275,15 @@
                 font-family: "Playfair Display", serif;
                 font-size: clamp(4rem, 8.5vw, 9.5rem);
                 font-style: italic;
-                font-weight: 700;
+                font-weight: 900;
                 color: #fff;
                 letter-spacing: -0.01em;
                 line-height: 0.9;
             }
             .hero-name-rittenmyer {
-                font-family: "Playfair Display", serif;
+                font-family: "Montserrat", sans-serif;
                 font-size: clamp(1.25rem, 2.5vw, 2.8rem);
-                font-weight: 400;
+                font-weight: 500;
                 color: rgba(255, 255, 255, 0.75);
                 letter-spacing: 0.52em;
                 text-transform: uppercase;
@@ -288,11 +292,13 @@
             .hero-sub {
                 margin-top: 2rem;
                 max-width: 460px;
-                font-size: 1rem;
-                line-height: 1.8;
-                color: rgba(255, 255, 255, 0.5);
+                font-size: 0.95rem;
+                line-height: 1.85;
+                color: rgba(255, 255, 255, 0.55);
                 opacity: 0;
                 animation: fadeUp 0.9s 0.9s forwards;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 400;
             }
             .hero-cta {
                 margin-top: 2.5rem;
@@ -317,12 +323,12 @@
             .btn {
                 display: inline-block;
                 padding: 0.85rem 2.25rem;
-                font-family: "DM Sans", sans-serif;
-                font-size: 0.7rem;
+                font-family: "Montserrat", sans-serif;
+                font-size: 0.68rem;
                 letter-spacing: 0.2em;
                 text-transform: uppercase;
                 transition: all 0.3s;
-                font-weight: 400;
+                font-weight: 500;
             }
             .btn-primary {
                 background: #fff;
@@ -355,12 +361,13 @@
                 width: max-content;
             }
             .marquee-item {
-                font-size: 0.65rem;
+                font-size: 0.62rem;
                 letter-spacing: 0.3em;
                 text-transform: uppercase;
                 color: rgba(255, 255, 255, 0.4);
                 flex-shrink: 0;
-                font-weight: 400;
+                font-weight: 500;
+                font-family: "Montserrat", sans-serif;
             }
             .marquee-dot {
                 color: var(--teal);
@@ -377,19 +384,20 @@
                 text-transform: uppercase;
                 color: var(--teal);
                 margin-bottom: 0.85rem;
-                font-weight: 400;
+                font-weight: 600;
+                font-family: "Montserrat", sans-serif;
             }
             .section-title {
                 font-family: "Playfair Display", serif;
                 font-size: clamp(2.8rem, 5vw, 5.5rem);
                 line-height: 1;
                 color: var(--ink);
-                font-weight: 700;
+                font-weight: 900;
                 margin-bottom: 3.5rem;
             }
             .section-title em {
                 font-style: italic;
-                font-weight: 400;
+                font-weight: 900;
                 color: var(--teal);
             }
 
@@ -406,9 +414,11 @@
             }
             .portfolio-desc {
                 max-width: 340px;
-                font-size: 0.92rem;
+                font-size: 0.88rem;
                 line-height: 1.85;
                 color: var(--ink-mid);
+                font-family: "Montserrat", sans-serif;
+                font-weight: 400;
             }
             .video-grid {
                 display: grid;
@@ -440,8 +450,9 @@
                 letter-spacing: 0.3em;
                 color: var(--teal);
                 text-transform: uppercase;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0.3rem;
+                font-family: "Montserrat", sans-serif;
             }
             .video-title {
                 font-family: "Playfair Display", serif;
@@ -451,10 +462,12 @@
                 margin-bottom: 0.2rem;
             }
             .video-client {
-                font-size: 0.7rem;
+                font-size: 0.68rem;
                 letter-spacing: 0.15em;
                 text-transform: uppercase;
                 color: var(--ink-soft);
+                font-family: "Montserrat", sans-serif;
+                font-weight: 500;
             }
 
             /* ── ABOUT ────────────────────────────────────────────────── */
@@ -488,13 +501,15 @@
                 opacity: 0.25;
             }
             .about-bio {
-                font-size: 1.05rem;
+                font-size: 1rem;
                 line-height: 1.95;
                 color: var(--ink-mid);
+                font-family: "Montserrat", sans-serif;
+                font-weight: 400;
             }
             .about-bio strong {
                 color: var(--ink);
-                font-weight: 500;
+                font-weight: 600;
             }
             .about-bio p + p {
                 margin-top: 1.5rem;
@@ -516,31 +531,36 @@
                 text-transform: uppercase;
                 color: var(--teal);
                 margin-bottom: 0.6rem;
-                font-weight: 400;
+                font-weight: 600;
+                font-family: "Montserrat", sans-serif;
             }
             .skill-list {
                 list-style: none;
             }
             .skill-list li {
-                font-size: 0.85rem;
+                font-size: 0.82rem;
                 color: var(--ink-mid);
                 line-height: 1.9;
                 border-bottom: 1px solid var(--rule);
                 padding-bottom: 0.3rem;
                 margin-bottom: 0.3rem;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 400;
             }
             .resume-link {
                 display: inline-flex;
                 align-items: center;
                 gap: 0.65rem;
                 margin-top: 2.5rem;
-                font-size: 0.7rem;
+                font-size: 0.68rem;
                 letter-spacing: 0.22em;
                 text-transform: uppercase;
                 color: var(--teal);
                 border-bottom: 1px solid var(--teal);
                 padding-bottom: 0.2rem;
                 transition: opacity 0.2s;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 600;
             }
             .resume-link:hover {
                 opacity: 0.6;
@@ -586,30 +606,35 @@
                 letter-spacing: 0.25em;
                 text-transform: uppercase;
                 color: var(--teal);
-                font-weight: 400;
+                font-weight: 600;
                 padding-top: 0.4rem;
                 line-height: 1.5;
+                font-family: "Montserrat", sans-serif;
             }
             .timeline-role {
                 font-family: "Playfair Display", serif;
                 font-size: 1.8rem;
-                font-weight: 700;
+                font-weight: 900;
                 color: var(--ink);
                 margin-bottom: 0.2rem;
                 line-height: 1.1;
             }
             .timeline-company {
-                font-size: 0.72rem;
+                font-size: 0.68rem;
                 letter-spacing: 0.15em;
                 text-transform: uppercase;
                 color: var(--ink-soft);
                 margin-bottom: 1rem;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 500;
             }
             .timeline-desc {
-                font-size: 0.95rem;
+                font-size: 0.92rem;
                 line-height: 1.85;
                 color: var(--ink-mid);
                 max-width: 520px;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 400;
             }
 
             /* ── FOOTER ───────────────────────────────────────────────── */
@@ -621,20 +646,38 @@
                 gap: 2rem;
                 align-items: end;
             }
-            .footer-name {
+            .footer-logo-text {
+                display: flex;
+                flex-direction: row;
+                align-items: baseline;
+                gap: 0.75rem;
+                margin-bottom: 1.25rem;
+                opacity: 0.9;
+            }
+            .footer-logo-chelsea {
                 font-family: "Playfair Display", serif;
-                font-size: 3.5rem;
-                font-weight: 700;
+                font-size: 2.2rem;
                 font-style: italic;
+                font-weight: 900;
                 color: #fff;
+                letter-spacing: -0.01em;
                 line-height: 1;
-                margin-bottom: 0.5rem;
+            }
+            .footer-logo-rittenmyer {
+                font-family: "Montserrat", sans-serif;
+                font-size: 0.7rem;
+                font-weight: 500;
+                color: rgba(255, 255, 255, 0.75);
+                letter-spacing: 0.52em;
+                text-transform: uppercase;
             }
             .footer-copy {
-                font-size: 0.65rem;
-                letter-spacing: 0.15em;
+                font-size: 0.62rem;
+                letter-spacing: 0.18em;
                 color: rgba(255, 255, 255, 0.2);
                 text-transform: uppercase;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 500;
             }
             .footer-contact {
                 text-align: right;
@@ -645,6 +688,8 @@
                 color: rgba(255, 255, 255, 0.4);
                 transition: color 0.2s;
                 margin-bottom: 0.4rem;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 400;
             }
             .footer-contact a:hover {
                 color: var(--seafoam);
@@ -662,6 +707,8 @@
                 color: rgba(255, 255, 255, 0.25);
                 transition: color 0.2s;
                 margin-bottom: 0;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 500;
             }
             .footer-social a:hover {
                 color: var(--seafoam);
@@ -782,7 +829,7 @@
 
         <!-- ── NAV ──────────────────────────────────────────────── -->
         <nav id="mainNav">
-            <a href="#home" class="nav-logo">
+            <a href="#home" class="nav-logo" aria-label="Chelsea Rittenmyer">
                 <span class="nav-logo-chelsea">Chelsea</span>
                 <span class="nav-logo-rittenmyer">Rittenmyer</span>
             </a>
@@ -879,7 +926,7 @@
                     <div class="video-embed-wrap">
                         <iframe
                             class="video-embed"
-                            src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+                            src="https://vimeo.com/1169694507?share=copy&fl=sv&fe=ci"
                             title="Featured Project"
                             allow="
                                 accelerometer;
@@ -1167,7 +1214,10 @@
         <!-- ── FOOTER ───────────────────────────────────────────── -->
         <footer>
             <div class="footer-left">
-                <div class="footer-name">Chelsea Rittenmyer</div>
+                <p class="footer-logo-text">
+                    <span class="footer-logo-chelsea">Chelsea</span>
+                    <span class="footer-logo-rittenmyer">Rittenmyer</span>
+                </p>
                 <p class="footer-copy">
                     © 2026 — Director of Content &amp; Creative Strategy
                 </p>
