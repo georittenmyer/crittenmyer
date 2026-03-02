@@ -449,15 +449,25 @@
                 overflow: hidden;
                 background: #dde5ea;
             }
+            @keyframes videoBlink {
+                0% {
+                    opacity: 1;
+                }
+                30% {
+                    opacity: 0.35;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
             .video-embed {
                 width: 100%;
                 aspect-ratio: 16/9;
                 border: none;
                 display: block;
-                transition: transform 0.5s ease;
             }
             .video-card:hover .video-embed {
-                transform: scale(1.03);
+                animation: videoBlink 0.5s ease-out forwards;
             }
             .video-meta {
                 padding: 1rem 0 0;
@@ -773,6 +783,9 @@
 
             /* ── RESPONSIVE ───────────────────────────────────────────── */
             @media (max-width: 900px) {
+                .portfolio-desc {
+                    display: none;
+                }
                 nav {
                     padding: 1.25rem 1.75rem;
                 }
@@ -943,7 +956,7 @@
                     <div class="video-embed-wrap">
                         <iframe
                             class="video-embed"
-                            src="https://player.vimeo.com/video/1169694507"
+                            src="https://player.vimeo.com/video/1169694507?title=0&byline=0&portrait=0&share=0"
                             title="Featured Project"
                             allow="
                                 accelerometer;
@@ -968,7 +981,7 @@
                     <div class="video-embed-wrap">
                         <iframe
                             class="video-embed"
-                            src="https://player.vimeo.com/video/1169694466"
+                            src="https://player.vimeo.com/video/1169694466?title=0&byline=0&portrait=0&share=0"
                             title="Project 2"
                             allow="
                                 accelerometer;
@@ -991,7 +1004,7 @@
                     <div class="video-embed-wrap">
                         <iframe
                             class="video-embed"
-                            src="https://player.vimeo.com/video/1169694444"
+                            src="https://player.vimeo.com/video/1169694444?title=0&byline=0&portrait=0&share=0"
                             title="Project 3"
                             allow="
                                 accelerometer;
@@ -1014,7 +1027,7 @@
                     <div class="video-embed-wrap">
                         <iframe
                             class="video-embed"
-                            src="https://player.vimeo.com/video/1169694488"
+                            src="https://player.vimeo.com/video/1169694488?title=0&byline=0&portrait=0&share=0"
                             title="Project 4"
                             allow="
                                 accelerometer;
@@ -1039,7 +1052,7 @@
                     <div class="video-embed-wrap">
                         <iframe
                             class="video-embed"
-                            src="https://player.vimeo.com/video/36372380"
+                            src="https://player.vimeo.com/video/36372380?title=0&byline=0&portrait=0&share=0"
                             title="Project 5"
                             allow="
                                 accelerometer;
