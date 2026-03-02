@@ -1,441 +1,309 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>
-            Chelsea Rittenmyer — Director of Content & Creative Strategy
-        </title>
-        <meta
-            name="description"
-            content="Chelsea Rittenmyer is a Creative Director and video producer at Amazon. Storytelling, brand strategy, and content creation."
-        />
-        <meta
-            property="og:title"
-            content="Chelsea Rittenmyer — Creative Director"
-        />
-        <meta
-            property="og:description"
-            content="Director of Content & Creative Strategy at Amazon. Storytelling that moves people."
-        />
-        <meta property="og:url" content="https://crittenmyer.com" />
-        <link rel="canonical" href="https://crittenmyer.com" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="assets/css/style.css" />
-    </head>
-    <body>
-        <!-- Custom Cursor -->
-        <div class="cursor" id="cursor"></div>
-        <div class="cursor-ring" id="cursorRing"></div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chelsea Rittenmyer — Director of Content & Creative Strategy</title>
+  <meta name="description" content="Chelsea Rittenmyer is a Creative Director and video producer at Amazon. Storytelling, brand strategy, and content creation.">
+  <meta property="og:title" content="Chelsea Rittenmyer — Creative Director">
+  <meta property="og:description" content="Director of Content & Creative Strategy at Amazon. Storytelling that moves people.">
+  <meta property="og:url" content="https://crittenmyer.com">
+  <link rel="canonical" href="https://crittenmyer.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
 
-        <!-- ── NAV ────────────────────────────────────────────────── -->
-        <nav>
-            <a href="#home" class="nav-logo">
-                <span class="nav-logo-chelsea">Chelsea</span>
-                <span class="nav-logo-rittenmyer">Rittenmyer</span>
-            </a>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#portfolio">Work</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li>
-                    <a
-                        href="https://crittenmyer.com/s/Chelsea2018-copy.pdf"
-                        target="_blank"
-                        rel="noopener"
-                        >Resume</a
-                    >
-                </li>
-            </ul>
-        </nav>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
-        <!-- ── HERO ───────────────────────────────────────────────── -->
-        <section class="hero" id="home">
-            <div class="hero-left">
-                <p class="hero-tag">
-                    Director of Content &amp; Creative Strategy
-                </p>
-                <h1 class="hero-name">
-                    <span class="hero-name-chelsea">Chelsea</span>
-                    <span class="hero-name-rittenmyer">Rittenmyer</span>
-                </h1>
-                <p class="hero-sub">
-                    Storyteller. Creative Director. Brand Builder. Turning ideas
-                    into moving images that shift culture and drive results — at
-                    Amazon and beyond.
-                </p>
-                <div class="hero-cta">
-                    <a href="#portfolio" class="btn btn-primary">View Work</a>
-                    <a href="#about" class="btn btn-ghost">About Chelsea</a>
-                </div>
-            </div>
-            <div class="hero-right">
-                <img
-                    src="assets/images/chelsea-hero.jpg"
-                    alt="Chelsea Rittenmyer"
-                    class="hero-photo"
-                />
-                <div class="hero-photo-overlay"></div>
-                <!--<div class="hero-stat">
-        <div class="hero-stat-num">16+</div>
-        <div class="hero-stat-label">Years of Creative Leadership</div>
-      </div>-->
-            </div>
-        </section>
+  <!-- ── NAV ──────────────────────────────────────────────── -->
+  <nav id="mainNav">
+    <a href="#home" class="nav-logo">
+      <span class="nav-logo-chelsea">Chelsea</span>
+      <span class="nav-logo-rittenmyer">Rittenmyer</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#portfolio">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="https://crittenmyer.com/s/Chelsea2018-copy.pdf" target="_blank" rel="noopener">Resume</a></li>
+    </ul>
+  </nav>
 
-        <!-- ── MARQUEE ────────────────────────────────────────────── -->
-        <div class="marquee-wrap" aria-hidden="true">
-            <div class="marquee-track">
-                <span class="marquee-item">Creative Direction</span>
-                <span class="marquee-dot">✦</span>
-                <span class="marquee-item">Video Production</span>
-                <span class="marquee-dot">✦</span>
-                <span class="marquee-item">Brand Strategy</span>
-                <span class="marquee-dot">✦</span>
-                <span class="marquee-item">Content Creation</span>
-                <span class="marquee-dot">✦</span>
-                <span class="marquee-item">Amazon Devices</span>
-                <span class="marquee-dot">✦</span>
-                <span class="marquee-item">Storytelling</span>
-                <span class="marquee-dot">✦</span>
-                <span class="marquee-item">Team Leadership</span>
-                <span class="marquee-dot">✦</span>
-                <!-- Duplicate for seamless loop -->
-                <span class="marquee-item">Creative Direction</span>
-                <span class="marquee-dot">✦</span>
-                <span class="marquee-item">Video Production</span>
-                <span class="marquee-dot">✦</span>
-                <span class="marquee-item">Brand Strategy</span>
-                <span class="marquee-dot">✦</span>
-                <span class="marquee-item">Content Creation</span>
-                <span class="marquee-dot">✦</span>
-                <span class="marquee-item">Amazon Devices</span>
-                <span class="marquee-dot">✦</span>
-                <span class="marquee-item">Storytelling</span>
-                <span class="marquee-dot">✦</span>
-                <span class="marquee-item">Team Leadership</span>
-                <span class="marquee-dot">✦</span>
-            </div>
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section class="hero" id="home">
+    <img src="assets/images/chelsea-hero.jpg" alt="Chelsea Rittenmyer" class="hero-photo">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Director of Content &amp; Creative Strategy</p>
+      <h1 class="hero-name">
+        <span class="hero-name-chelsea">Chelsea</span>
+        <span class="hero-name-rittenmyer">Rittenmyer</span>
+      </h1>
+      <p class="hero-sub">Storyteller. Creative Director. Brand Builder. Turning ideas into moving images that shift culture and drive results — at Amazon and beyond.</p>
+      <div class="hero-cta">
+        <a href="#portfolio" class="btn btn-primary">View Work</a>
+        <a href="#about" class="btn btn-ghost">About Chelsea</a>
+      </div>
+    </div>
+    <div class="hero-stat-badge">
+      <div class="hero-stat-num">16+</div>
+      <div class="hero-stat-label">Years of Creative Leadership</div>
+    </div>
+  </section>
+
+  <!-- ── MARQUEE ──────────────────────────────────────────── -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">Creative Direction</span>
+      <span class="marquee-dot">✦</span>
+      <span class="marquee-item">Video Production</span>
+      <span class="marquee-dot">✦</span>
+      <span class="marquee-item">Brand Strategy</span>
+      <span class="marquee-dot">✦</span>
+      <span class="marquee-item">Content Creation</span>
+      <span class="marquee-dot">✦</span>
+      <span class="marquee-item">Amazon Devices</span>
+      <span class="marquee-dot">✦</span>
+      <span class="marquee-item">Storytelling</span>
+      <span class="marquee-dot">✦</span>
+      <span class="marquee-item">Team Leadership</span>
+      <span class="marquee-dot">✦</span>
+      <span class="marquee-item">Creative Direction</span>
+      <span class="marquee-dot">✦</span>
+      <span class="marquee-item">Video Production</span>
+      <span class="marquee-dot">✦</span>
+      <span class="marquee-item">Brand Strategy</span>
+      <span class="marquee-dot">✦</span>
+      <span class="marquee-item">Content Creation</span>
+      <span class="marquee-dot">✦</span>
+      <span class="marquee-item">Amazon Devices</span>
+      <span class="marquee-dot">✦</span>
+      <span class="marquee-item">Storytelling</span>
+      <span class="marquee-dot">✦</span>
+      <span class="marquee-item">Team Leadership</span>
+      <span class="marquee-dot">✦</span>
+    </div>
+  </div>
+
+  <!-- ── PORTFOLIO ────────────────────────────────────────── -->
+  <section class="section" id="portfolio">
+    <div class="portfolio-intro">
+      <div>
+        <p class="section-label">Selected Work</p>
+        <h2 class="section-title">The <em>Portfolio.</em></h2>
+      </div>
+      <p class="portfolio-desc">A selection of video campaigns and creative projects spanning Amazon, CreativeLive, and beyond. Replace placeholders with Chelsea's actual YouTube or Vimeo URLs.</p>
+    </div>
+
+    <div class="video-grid">
+
+      <div class="video-card featured">
+        <div class="video-embed-wrap">
+          <iframe class="video-embed"
+            src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+            title="Featured Project"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <div class="video-meta">
+          <p class="video-number">01 — Featured</p>
+          <h3 class="video-title">Featured Campaign Title</h3>
+          <span class="video-client">Amazon Devices &amp; Digital Services</span>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap">
+          <iframe class="video-embed"
+            src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+            title="Project 2"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <div class="video-meta">
+          <p class="video-number">02</p>
+          <h3 class="video-title">Project Title</h3>
+          <span class="video-client">Client / Brand</span>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap">
+          <iframe class="video-embed"
+            src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+            title="Project 3"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <div class="video-meta">
+          <p class="video-number">03</p>
+          <h3 class="video-title">Project Title</h3>
+          <span class="video-client">Client / Brand</span>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap">
+          <iframe class="video-embed"
+            src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+            title="Project 4"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <div class="video-meta">
+          <p class="video-number">04</p>
+          <h3 class="video-title">Project Title</h3>
+          <span class="video-client">Client / Brand</span>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap">
+          <iframe class="video-embed"
+            src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+            title="Project 5"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <div class="video-meta">
+          <p class="video-number">05</p>
+          <h3 class="video-title">Project Title</h3>
+          <span class="video-client">Client / Brand</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── ABOUT ────────────────────────────────────────────── -->
+  <section class="section" id="about">
+    <p class="section-label">About Chelsea</p>
+    <h2 class="section-title">The Story<br>Behind the <em>Lens.</em></h2>
+    <div class="about-grid">
+
+      <div class="about-photo-wrap">
+        <img src="assets/images/chelsea-hero.jpg" alt="Chelsea Rittenmyer" class="about-photo">
+        <div class="about-photo-accent"></div>
+      </div>
+
+      <div class="about-right">
+        <div class="about-bio">
+          <p>Chelsea Rittenmyer is a <strong>storyteller by nature</strong> and a seasoned Director of Content &amp; Creative Strategy with over <strong>16 years of experience</strong> leading creative campaigns across film, television, and brand media.</p>
+          <p>Currently at <strong>Amazon</strong>, she serves as Creative Director and lead behind live-action and educational video content within Amazon Devices and Digital Services — managing multimedia content for Alexa, Tablets, Kindle, and Prime Video across global product launches.</p>
+          <p>Before Amazon, Chelsea honed her craft at <strong>CreativeLive</strong>, shaping the look and feel of world-class photo and video education. Her career spans the full production spectrum — from concept and strategy through camera, post, and final delivery.</p>
+          <p>Based in <strong>Seattle, WA</strong>. Available worldwide.</p>
         </div>
 
-        <!-- ── PORTFOLIO ──────────────────────────────────────────── -->
-        <section class="section" id="portfolio">
-            <div class="portfolio-intro">
-                <div>
-                    <p class="section-label">Selected Work</p>
-                    <h2 class="section-title">The<br />Portfolio.</h2>
-                </div>
-                <!-- <p class="portfolio-desc">
-                    A selection of video content, campaigns, and creative
-                    projects. Replace the placeholder embeds below with
-                    Chelsea's actual YouTube or Vimeo URLs.
-                </p>-->
-            </div>
+        <div class="about-divider"></div>
 
-            <div class="video-grid">
-                <!-- FEATURED VIDEO — replace src URL -->
-                <div class="video-card featured">
-                    <iframe
-                        class="video-embed"
-                        src="https://player.vimeo.com/video/20507803?badge=0&amp"
-                        title="Featured Project"
-                        allow="
-                            accelerometer;
-                            autoplay;
-                            clipboard-write;
-                            encrypted-media;
-                            gyroscope;
-                            picture-in-picture;
-                        "
-                        allowfullscreen
-                    >
-                    </iframe>
-                    <div class="video-meta">
-                        <h3 class="video-title">Featured Campaign Title</h3>
-                        <span class="video-client"
-                            >Amazon Devices &amp; Digital Services</span
-                        >
-                    </div>
-                </div>
+        <div class="skill-grid">
+          <div class="skill-group">
+            <p class="skill-cat-label">Specialties</p>
+            <ul class="skill-list">
+              <li>Storytelling</li>
+              <li>Creative Strategy</li>
+              <li>Video Production</li>
+              <li>Photo Production</li>
+              <li>Brand Development</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <p class="skill-cat-label">Leadership</p>
+            <ul class="skill-list">
+              <li>Team Building</li>
+              <li>Creative Direction</li>
+              <li>Talent Recruitment</li>
+              <li>Campaign Management</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <p class="skill-cat-label">Marketing</p>
+            <ul class="skill-list">
+              <li>Digital Marketing</li>
+              <li>Content Strategy</li>
+              <li>Consumer Insights</li>
+              <li>Ad Concepts</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <p class="skill-cat-label">Education</p>
+            <ul class="skill-list">
+              <li>B.A. Electronic Media</li>
+              <li>University of Cincinnati</li>
+              <li>2005–2009</li>
+            </ul>
+          </div>
+        </div>
 
-                <!-- VIDEO 2 — replace src URL -->
-                <div class="video-card">
-                    <iframe
-                        class="video-embed"
-                        src="https://www.youtube.com/embed/VIDEO_ID_HERE"
-                        title="Project 2"
-                        allow="
-                            accelerometer;
-                            autoplay;
-                            clipboard-write;
-                            encrypted-media;
-                            gyroscope;
-                            picture-in-picture;
-                        "
-                        allowfullscreen
-                    >
-                    </iframe>
-                    <div class="video-meta">
-                        <h3 class="video-title">Project Title</h3>
-                        <span class="video-client">Client / Brand</span>
-                    </div>
-                </div>
+        <a href="https://crittenmyer.com/s/Chelsea2018-copy.pdf" target="_blank" rel="noopener" class="resume-link">
+          Download Full Resume
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
 
-                <!-- VIDEO 3 — replace src URL -->
-                <div class="video-card">
-                    <iframe
-                        class="video-embed"
-                        src="https://www.youtube.com/embed/VIDEO_ID_HERE"
-                        title="Project 3"
-                        allow="
-                            accelerometer;
-                            autoplay;
-                            clipboard-write;
-                            encrypted-media;
-                            gyroscope;
-                            picture-in-picture;
-                        "
-                        allowfullscreen
-                    >
-                    </iframe>
-                    <div class="video-meta">
-                        <h3 class="video-title">Project Title</h3>
-                        <span class="video-client">Client / Brand</span>
-                    </div>
-                </div>
+    </div>
+  </section>
 
-                <!-- VIDEO 4 — replace src URL -->
-                <div class="video-card">
-                    <iframe
-                        class="video-embed"
-                        src="https://www.youtube.com/embed/VIDEO_ID_HERE"
-                        title="Project 4"
-                        allow="
-                            accelerometer;
-                            autoplay;
-                            clipboard-write;
-                            encrypted-media;
-                            gyroscope;
-                            picture-in-picture;
-                        "
-                        allowfullscreen
-                    >
-                    </iframe>
-                    <div class="video-meta">
-                        <h3 class="video-title">Project Title</h3>
-                        <span class="video-client">Client / Brand</span>
-                    </div>
-                </div>
+  <!-- ── EXPERIENCE ───────────────────────────────────────── -->
+  <section class="section" id="experience">
+    <p class="section-label">Career</p>
+    <h2 class="section-title"><em>Experience.</em></h2>
 
-                <!-- VIDEO 5 — replace src URL -->
-                <div class="video-card">
-                    <iframe
-                        class="video-embed"
-                        src="https://www.youtube.com/embed/VIDEO_ID_HERE"
-                        title="Project 5"
-                        allow="
-                            accelerometer;
-                            autoplay;
-                            clipboard-write;
-                            encrypted-media;
-                            gyroscope;
-                            picture-in-picture;
-                        "
-                        allowfullscreen
-                    >
-                    </iframe>
-                    <div class="video-meta">
-                        <h3 class="video-title">Project Title</h3>
-                        <span class="video-client">Client / Brand</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="timeline">
 
-        <!-- ── ABOUT ──────────────────────────────────────────────── -->
-        <section class="section" id="about">
-            <p class="section-label">About Chelsea</p>
-            <h2 class="section-title">The Story<br />Behind the<br />Lens.</h2>
-            <div class="about-grid">
-                <div class="about-bio">
-                    <p>
-                        Chelsea Rittenmyer is a
-                        <strong>storyteller by nature</strong> and a seasoned
-                        Director of Content &amp; Creative Strategy with over
-                        <strong>16 years of experience</strong> leading the
-                        development and presentation of creative campaigns
-                        across film, television, and brand media.
-                    </p>
-                    <p>
-                        Currently at <strong>Amazon</strong>, she serves as
-                        Creative Director and lead behind live-action and
-                        educational video content within Amazon Devices and
-                        Digital Services — managing multimedia content for
-                        Alexa, Tablets, Kindle, and Prime Video across global
-                        product launches.
-                    </p>
-                    <p>
-                        Before Amazon, Chelsea honed her craft at
-                        <strong>CreativeLive</strong>, shaping the look and feel
-                        of world-class photo and video education. Her career
-                        spans the full production spectrum — from concept and
-                        strategy through camera, post, and final delivery.
-                    </p>
-                    <p>
-                        Based in <strong>Seattle, WA</strong>. Available
-                        worldwide.
-                    </p>
-                    <a
-                        href="https://crittenmyer.com/s/Chelsea2018-copy.pdf"
-                        target="_blank"
-                        rel="noopener"
-                        class="resume-link"
-                    >
-                        Download Full Resume
-                        <svg
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            aria-hidden="true"
-                        >
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </a>
-                </div>
+      <div class="timeline-item">
+        <p class="timeline-period">Current</p>
+        <div class="timeline-body">
+          <h3 class="timeline-role">Director of Content &amp; Creative Strategy</h3>
+          <p class="timeline-company">Amazon — Seattle, WA</p>
+          <p class="timeline-desc">Creative Director and lead behind live-action and educational video content within Amazon Devices and Digital Services. Multimedia Content Manager for Alexa, Tablets, Kindle, and Prime Video — supporting all new product launches worldwide.</p>
+        </div>
+      </div>
 
-                <div class="about-skills">
-                    <div class="skill-category">
-                        <p class="skill-cat-label">Specialties</p>
-                        <div class="skill-items">
-                            <span class="skill-tag">Storytelling</span>
-                            <span class="skill-tag">Creative Strategy</span>
-                            <span class="skill-tag">Video Production</span>
-                            <span class="skill-tag">Photo Production</span>
-                            <span class="skill-tag">Brand Development</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <p class="skill-cat-label">Leadership</p>
-                        <div class="skill-items">
-                            <span class="skill-tag">Team Building</span>
-                            <span class="skill-tag">Creative Direction</span>
-                            <span class="skill-tag">Talent Recruitment</span>
-                            <span class="skill-tag">Campaign Management</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <p class="skill-cat-label">Marketing</p>
-                        <div class="skill-items">
-                            <span class="skill-tag">Digital Marketing</span>
-                            <span class="skill-tag">Content Strategy</span>
-                            <span class="skill-tag">Consumer Insights</span>
-                            <span class="skill-tag">Ad Concepts</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <p class="skill-cat-label">Education</p>
-                        <div class="skill-items">
-                            <span class="skill-tag">B.A. Electronic Media</span>
-                            <span class="skill-tag"
-                                >University of Cincinnati</span
-                            >
-                            <span class="skill-tag">2005–2009</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <div class="timeline-item">
+        <p class="timeline-period">Previous</p>
+        <div class="timeline-body">
+          <h3 class="timeline-role">Creative Producer &amp; Content Strategist</h3>
+          <p class="timeline-company">CreativeLive — Seattle, WA</p>
+          <p class="timeline-desc">Partnered cross-functionally to build and strengthen the online channel. Developed the look and feel of photo and video classes, overseeing production and post-production to maintain brand quality and profitability.</p>
+        </div>
+      </div>
 
-        <!-- ── EXPERIENCE ─────────────────────────────────────────── -->
-        <section class="section" id="experience">
-            <p class="section-label">Career</p>
-            <h2 class="section-title">Experience.</h2>
+      <div class="timeline-item">
+        <p class="timeline-period">2009–2016</p>
+        <div class="timeline-body">
+          <h3 class="timeline-role">Creative Director &amp; Brand Strategist</h3>
+          <p class="timeline-company">Geo Rittenmyer Visuals — Seattle, WA</p>
+          <p class="timeline-desc">Shaped the brand identity of a startup from the ground up, crafting a compelling narrative that resonated with audiences. Full-spectrum creative direction spanning film, photography, and brand development.</p>
+        </div>
+      </div>
 
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <p class="timeline-period">Current</p>
-                    <h3 class="timeline-role">
-                        Director of Content &amp; Creative Strategy
-                    </h3>
-                    <p class="timeline-company">Amazon — Seattle, WA</p>
-                    <p class="timeline-desc">
-                        Creative Director and lead behind live-action and
-                        educational video content within Amazon Devices and
-                        Digital Services. Multimedia Content Manager for Alexa,
-                        Tablets, Kindle, and Prime Video — supporting all new
-                        product launches worldwide.
-                    </p>
-                </div>
+    </div>
+  </section>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <p class="timeline-period">Previous</p>
-                    <h3 class="timeline-role">
-                        Creative Producer &amp; Content Strategist
-                    </h3>
-                    <p class="timeline-company">CreativeLive — Seattle, WA</p>
-                    <p class="timeline-desc">
-                        Partnered cross-functionally to build and strengthen the
-                        online channel. Developed the look and feel of photo and
-                        video classes, overseeing production and post-production
-                        to maintain brand quality and profitability.
-                    </p>
-                </div>
+  <!-- ── FOOTER ───────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-left">
+      <div class="footer-name">Chelsea Rittenmyer</div>
+      <p class="footer-copy">© 2026 — Director of Content &amp; Creative Strategy</p>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:chelsea@georittenmyer.com">chelsea@georittenmyer.com</a>
+      <a href="tel:3042793159">(304) 279-3159</a>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/chelsea-rittenmyer-says-hello/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://crittenmyer.com" target="_blank" rel="noopener">Portfolio ↗</a>
+      </div>
+    </div>
+  </footer>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <p class="timeline-period">2009–2016</p>
-                    <h3 class="timeline-role">
-                        Creative Director &amp; Brand Strategist
-                    </h3>
-                    <p class="timeline-company">
-                        Geo Rittenmyer Visuals — Seattle, WA
-                    </p>
-                    <p class="timeline-desc">
-                        Shaped the brand identity of a startup from the ground
-                        up, crafting a compelling narrative that resonated with
-                        audiences. Full-spectrum creative direction spanning
-                        film, photography, and brand development.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ── FOOTER ─────────────────────────────────────────────── -->
-        <footer>
-            <div>
-                <div class="footer-name">Chelsea Rittenmyer</div>
-                <p class="footer-copy">
-                    © 2026 — Director of Content &amp; Creative Strategy
-                </p>
-            </div>
-            <div class="footer-contact">
-                <a href="mailto:chelsea@georittenmyer.com"
-                    >chelsea@georittenmyer.com</a
-                >
-                <a href="tel:3042793159">(304) 279-3159</a>
-                <a
-                    href="https://www.linkedin.com/in/chelsea-rittenmyer-says-hello/"
-                    target="_blank"
-                    rel="noopener"
-                    >LinkedIn ↗</a
-                >
-                <a href="https://crittenmyer.com" target="_blank" rel="noopener"
-                    >crittenmyer.com ↗</a
-                >
-            </div>
-        </footer>
-
-        <script src="assets/js/main.js"></script>
-    </body>
+  <script src="assets/js/main.js"></script>
+</body>
 </html>

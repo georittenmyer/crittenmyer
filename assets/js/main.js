@@ -74,22 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── NAV TRANSPARENCY ON SCROLL ─────────────────────────── */
-  const nav = document.querySelector('nav');
+  /* ── NAV SCROLL STATE ────────────────────────────────────── */
+  const nav = document.getElementById('mainNav');
   if (nav) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 60) {
-        nav.style.mixBlendMode = 'normal';
-        nav.style.background   = 'rgba(10, 10, 10, 0.92)';
-        nav.style.backdropFilter = 'blur(10px)';
-        nav.style.borderBottom = '1px solid rgba(245,242,238,0.07)';
-      } else {
-        nav.style.mixBlendMode = 'difference';
-        nav.style.background   = 'transparent';
-        nav.style.backdropFilter = 'none';
-        nav.style.borderBottom = 'none';
-      }
-    });
+    const onScroll = () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
 
 });
