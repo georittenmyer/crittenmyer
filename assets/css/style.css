@@ -1,0 +1,671 @@
+/* ============================================================
+   CHELSEA RITTENMYER — Main Stylesheet
+   ============================================================ */
+
+/* ── VARIABLES ──────────────────────────────────────────────── */
+:root {
+    --black: #070d12;
+    --white: #e8f0f5;
+    --cream: #d6e4ed;
+    --accent: #1a8fa3;
+    --gold: #4ecdc4;
+    --mid: #2a3d4a;
+    --deep: #0d1f2d;
+}
+
+/* ── RESET & BASE ───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background: var(--black);
+    color: var(--white);
+    font-family: "DM Sans", sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: none;
+}
+
+/* ── CUSTOM CURSOR ──────────────────────────────────────────── */
+.cursor {
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition:
+        transform 0.15s ease,
+        width 0.2s,
+        height 0.2s,
+        background 0.2s;
+}
+.cursor-ring {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(200, 67, 42, 0.5);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.35s ease;
+}
+.cursor.hover {
+    transform: translate(-50%, -50%) scale(2);
+    background: var(--gold);
+}
+
+/* ── NAVIGATION ─────────────────────────────────────────────── */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+    mix-blend-mode: difference;
+}
+.nav-logo {
+    font-family: "Bebas Neue", sans-serif;
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: 0.08em;
+}
+.nav-logo-chelsea {
+    font-size: 1.72rem;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+}
+.nav-logo-rittenmyer {
+    font-size: 1.27rem;
+    letter-spacing: 0.08em;
+}
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+.nav-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+}
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+/* Hamburger (mobile) */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: none;
+    background: none;
+    border: none;
+    padding: 4px;
+}
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--white);
+    transition: all 0.3s;
+}
+.nav-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+}
+.nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+.nav-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* ── HERO ───────────────────────────────────────────────────── */
+.hero {
+    min-height: 40vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 3rem 5rem;
+}
+.hero-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+}
+.hero-name {
+    font-family: "Bebas Neue", sans-serif;
+    line-height: 0.95;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.5s forwards;
+    display: flex;
+    flex-direction: column;
+}
+.hero-name-rittenmyer {
+    font-size: clamp(2.2rem, 7.5vw, 8.5rem);
+    color: var(--white);
+    letter-spacing: 0.03em;
+    display: block;
+}
+.hero-name-chelsea {
+    font-size: clamp(2.2rem, 8.5vw, 9.5rem);
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    display: block;
+}
+.hero-sub {
+    margin-top: 2rem;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: rgba(245, 242, 238, 0.55);
+    max-width: 380px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.8s forwards;
+}
+.hero-cta {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.9s 1s forwards;
+}
+
+/* ── BUTTONS ────────────────────────────────────────────────── */
+.btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+.btn-primary {
+    background: var(--accent);
+    color: var(--white);
+    border: 1px solid var(--accent);
+}
+.btn-primary:hover {
+    background: transparent;
+    color: var(--accent);
+}
+.btn-ghost {
+    color: var(--white);
+    border: 1px solid rgba(245, 242, 238, 0.3);
+}
+.btn-ghost:hover {
+    border-color: var(--white);
+}
+
+/* ── HERO RIGHT ─────────────────────────────────────────────── */
+.hero-right {
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 1.2s 0.6s forwards;
+}
+.hero-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+.hero-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to right, var(--black) 0%, transparent 18%),
+        linear-gradient(to top, var(--black) 0%, transparent 30%),
+        linear-gradient(160deg, rgba(26, 143, 163, 0.18) 0%, transparent 60%);
+}
+/*.hero-stat {
+    position: absolute;
+    bottom: 3rem;
+    right: 2.5rem;
+    text-align: right;
+    background: rgba(7, 13, 18, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(78, 205, 196, 0.2);
+    padding: 1.25rem 1.75rem;
+}
+.hero-stat-num {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 5rem;
+    color: var(--gold);
+    line-height: 1;
+}
+.hero-stat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(232, 240, 245, 0.55);
+    margin-top: 0.25rem;
+}*/
+
+/* ── MARQUEE ────────────────────────────────────────────────── */
+.marquee-wrap {
+    overflow: hidden;
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(245, 242, 238, 0.1);
+    border-bottom: 1px solid rgba(245, 242, 238, 0.1);
+    background: var(--accent);
+}
+.marquee-track {
+    display: flex;
+    gap: 4rem;
+    animation: marquee 22s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+}
+.marquee-item {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    color: var(--white);
+    flex-shrink: 0;
+}
+.marquee-dot {
+    color: var(--gold);
+    margin-left: 4rem;
+}
+
+/* ── SECTIONS ───────────────────────────────────────────────── */
+.section {
+    padding: 7rem 3rem;
+}
+.section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+.section-title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(3rem, 6vw, 6rem);
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 3rem;
+}
+
+/* ── PORTFOLIO ──────────────────────────────────────────────── */
+#portfolio {
+    background: var(--black);
+}
+.portfolio-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    gap: 2rem;
+}
+.portfolio-desc {
+    max-width: 380px;
+    color: rgba(245, 242, 238, 0.45);
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+.video-card {
+    position: relative;
+    background: #111;
+    overflow: hidden;
+}
+.video-card.featured {
+    grid-column: 1 / -1;
+}
+.video-embed {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    display: block;
+    transition: transform 0.4s ease;
+}
+.video-card:hover .video-embed {
+    transform: scale(1.02);
+}
+.video-meta {
+    padding: 1.25rem 0 0;
+}
+.video-title {
+    font-family: "DM Serif Display", serif;
+    font-size: 1.15rem;
+    color: var(--white);
+    margin-bottom: 0.35rem;
+}
+.video-client {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+/* ── ABOUT ──────────────────────────────────────────────────── */
+#about {
+    background: var(--cream);
+    color: var(--mid);
+}
+#about .section-label {
+    color: var(--accent);
+}
+#about .section-title {
+    color: var(--mid);
+}
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+}
+.about-bio {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--mid);
+}
+.about-bio strong {
+    color: #0d1f2d;
+    font-weight: 500;
+}
+.about-bio p + p {
+    margin-top: 1.5rem;
+}
+.resume-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 3rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--black);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.25rem;
+    transition: color 0.2s;
+}
+.resume-link:hover {
+    color: var(--accent);
+}
+.resume-link svg {
+    transition: transform 0.2s;
+}
+.resume-link:hover svg {
+    transform: translateX(4px);
+}
+
+/* Skills */
+.skill-category {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 1.4rem 0;
+}
+.skill-category:last-child {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.skill-cat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+}
+.skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.skill-tag {
+    background: var(--deep);
+    color: var(--white);
+    font-size: 0.75rem;
+    padding: 0.35rem 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+/* ── EXPERIENCE ─────────────────────────────────────────────── */
+#experience {
+    background: var(--deep);
+}
+.timeline {
+    position: relative;
+    max-width: 800px;
+}
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(245, 242, 238, 0.1);
+}
+.timeline-item {
+    padding-left: 3rem;
+    padding-bottom: 4rem;
+    position: relative;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition:
+        opacity 0.6s,
+        transform 0.6s;
+}
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+.timeline-dot {
+    position: absolute;
+    left: -4px;
+    top: 0.4rem;
+    width: 9px;
+    height: 9px;
+    background: var(--accent);
+    border-radius: 50%;
+}
+.timeline-period {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+.timeline-role {
+    font-family: "DM Serif Display", serif;
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+}
+.timeline-company {
+    font-size: 0.8rem;
+    color: rgba(245, 242, 238, 0.35);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+.timeline-desc {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(245, 242, 238, 0.55);
+    max-width: 560px;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+footer {
+    background: var(--black);
+    border-top: 1px solid rgba(245, 242, 238, 0.08);
+    padding: 4rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-name {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+}
+.footer-copy {
+    font-size: 0.72rem;
+    color: rgba(245, 242, 238, 0.2);
+    margin-top: 0.5rem;
+}
+.footer-contact {
+    text-align: right;
+}
+.footer-contact a {
+    display: block;
+    color: rgba(245, 242, 238, 0.45);
+    font-size: 0.88rem;
+    transition: color 0.2s;
+    margin-bottom: 0.3rem;
+}
+.footer-contact a:hover {
+    color: var(--accent);
+}
+
+/* ── SCROLLBAR ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: var(--black);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+}
+
+/* ── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    nav {
+        padding: 1.5rem 1.5rem;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 1.5rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--black);
+        padding: 2rem 1.5rem;
+    }
+    .nav-links.open {
+        display: flex;
+    }
+    .nav-toggle {
+        display: flex;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+    .hero-right {
+        min-height: 55vh;
+    }
+    .hero-left {
+        padding: 7rem 1.5rem 4rem;
+    }
+
+    .section {
+        padding: 5rem 1.5rem;
+    }
+    .portfolio-intro {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+    .video-card.featured {
+        grid-column: 1;
+    }
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+    .footer-contact {
+        text-align: center;
+    }
+}
