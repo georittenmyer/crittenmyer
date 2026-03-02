@@ -69,40 +69,53 @@
                 text-decoration: none;
                 cursor: none;
             }
-
             /* ── CUSTOM CURSOR ────────────────────────────────────────── */
-            .cursor {
-                width: 10px;
-                height: 10px;
-                background: var(--teal);
-                border-radius: 50%;
-                position: fixed;
-                top: 0;
-                left: 0;
-                pointer-events: none;
-                z-index: 9999;
-                transform: translate(-50%, -50%);
-                transition:
-                    transform 0.15s ease,
-                    background 0.2s;
-                mix-blend-mode: multiply;
+            @media (hover: hover) and (pointer: fine) {
+                .cursor {
+                    width: 10px;
+                    height: 10px;
+                    background: var(--teal);
+                    border-radius: 50%;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    pointer-events: none;
+                    z-index: 9999;
+                    transform: translate(-50%, -50%);
+                    transition:
+                        transform 0.15s ease,
+                        background 0.2s;
+                    mix-blend-mode: multiply;
+                }
+                .cursor-ring {
+                    width: 36px;
+                    height: 36px;
+                    border: 1px solid rgba(26, 143, 163, 0.4);
+                    border-radius: 50%;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    pointer-events: none;
+                    z-index: 9998;
+                    transform: translate(-50%, -50%);
+                    transition: all 0.3s ease;
+                }
+                .cursor.hover {
+                    transform: translate(-50%, -50%) scale(2.5);
+                    background: var(--seafoam);
+                }
             }
-            .cursor-ring {
-                width: 36px;
-                height: 36px;
-                border: 1px solid rgba(26, 143, 163, 0.4);
-                border-radius: 50%;
-                position: fixed;
-                top: 0;
-                left: 0;
-                pointer-events: none;
-                z-index: 9998;
-                transform: translate(-50%, -50%);
-                transition: all 0.3s ease;
-            }
-            .cursor.hover {
-                transform: translate(-50%, -50%) scale(2.5);
-                background: var(--seafoam);
+            @media (hover: none), (pointer: coarse) {
+                body,
+                a,
+                button,
+                .nav-toggle {
+                    cursor: auto;
+                }
+                .cursor,
+                .cursor-ring {
+                    display: none;
+                }
             }
 
             /* ── NAVIGATION ───────────────────────────────────────────── */
@@ -1248,9 +1261,12 @@
         <script>
             document.addEventListener("DOMContentLoaded", () => {
                 /* ── CUSTOM CURSOR ──────────────────────────────────── */
+                const hasPointer = window.matchMedia(
+                    "(hover: hover) and (pointer: fine)",
+                ).matches;
                 const cursor = document.getElementById("cursor");
                 const cursorRing = document.getElementById("cursorRing");
-                if (cursor && cursorRing) {
+                if (hasPointer && cursor && cursorRing) {
                     document.addEventListener("mousemove", (e) => {
                         cursor.style.left = e.clientX + "px";
                         cursor.style.top = e.clientY + "px";
