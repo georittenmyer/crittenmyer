@@ -1,0 +1,1045 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chelsea Rittenmyer — Resume</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Montserrat:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --bg: #f7f4f0;
+                --bg2: #eeeae4;
+                --ink: #0d1f2d;
+                --ink-mid: #4a5a66;
+                --ink-soft: #8a9aa6;
+                --teal: #1a8fa3;
+                --seafoam: #4ecdc4;
+                --rule: rgba(13, 31, 45, 0.1);
+                --hero-bg: #0a1a24;
+            }
+
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background: #fff;
+                color: var(--ink);
+                font-family: "Montserrat", sans-serif;
+                font-size: 13px;
+                line-height: 1.6;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            /* ── PAGE SHELL ── */
+            .page {
+                width: 850px;
+                min-height: 1100px;
+                margin: 0 auto;
+                background: #fff;
+                box-shadow: 0 4px 40px rgba(0, 0, 0, 0.12);
+            }
+
+            /* ── HEADER ── */
+            header {
+                background: #fff;
+                padding: 32px 45px 28px 45px;
+                position: relative;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 18px;
+            }
+
+            header::before {
+                display: none;
+            }
+
+            /* Teal bottom accent line */
+            header::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: linear-gradient(
+                    90deg,
+                    var(--teal) 0%,
+                    var(--seafoam) 50%,
+                    transparent 100%
+                );
+            }
+
+            /* ── LOGO / NAME LOCKUP ── */
+            .name-lockup {
+                position: relative;
+                z-index: 1;
+                flex-shrink: 0;
+            }
+
+            .name-chelsea {
+                font-family: "Playfair Display", serif;
+                font-size: 72px;
+                font-style: italic;
+                font-weight: 900;
+                color: #0a1a24;
+                line-height: 0.9;
+                letter-spacing: -0.01em;
+                position: relative;
+                display: inline-block;
+            }
+
+            .name-chelsea::after {
+                display: none;
+            }
+
+            .name-rittenmyer {
+                font-family: "Montserrat", sans-serif;
+                font-size: 17.5px;
+                font-weight: 500;
+                color: var(--ink-soft);
+                letter-spacing: 0.48em;
+                text-transform: uppercase;
+                margin-top: 1px;
+                text-align: center;
+            }
+
+            /* ── HEADER RIGHT ── */
+            .header-right {
+                position: relative;
+                z-index: 1;
+                text-align: right;
+                flex: 1;
+            }
+
+            .header-title {
+                font-family: "Montserrat", sans-serif;
+                font-size: 10pt;
+                font-weight: 700;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--seafoam);
+                margin-bottom: 8px;
+            }
+
+            .header-tagline {
+                font-size: 9.5px;
+                font-weight: 500;
+                color: var(--ink-mid);
+                margin-bottom: 14px;
+                letter-spacing: 0.02em;
+            }
+
+            .header-contacts {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 4px 0;
+                justify-content: flex-end;
+            }
+
+            .contact-item {
+                font-size: 11px;
+                font-weight: 500;
+                color: var(--ink-mid);
+                letter-spacing: 0.02em;
+            }
+
+            .contact-sep {
+                color: var(--seafoam);
+                margin: 0 7px;
+                font-size: 10px;
+            }
+
+            /* ── BODY ── */
+            .body {
+                display: grid;
+                grid-template-columns: 220px 1fr;
+                min-height: 960px;
+            }
+
+            /* ── LEFT SIDEBAR ── */
+            .sidebar {
+                background: #fafaf9;
+                padding: 32px 24px 32px 28px;
+                border-right: 1px solid var(--rule);
+            }
+
+            /* ── RIGHT MAIN ── */
+            .main {
+                background: #fff;
+                padding: 32px 36px 32px 32px;
+            }
+
+            /* ── SECTION LABELS ── */
+            .section-label {
+                font-size: 7px;
+                font-weight: 600;
+                letter-spacing: 0.42em;
+                text-transform: uppercase;
+                color: var(--teal);
+                margin-bottom: 6px;
+            }
+
+            .section-rule {
+                height: 1px;
+                background: var(--rule);
+                margin-bottom: 14px;
+            }
+
+            .sidebar-section {
+                margin-bottom: 26px;
+            }
+            .main-section {
+                margin-bottom: 24px;
+            }
+
+            /* ── SKILL LIST ── */
+            .skill-list {
+                list-style: none;
+            }
+
+            .skill-list li {
+                font-size: 11px;
+                font-weight: 400;
+                color: var(--ink-mid);
+                padding: 4px 0;
+                border-bottom: 1px solid var(--rule);
+                display: flex;
+                align-items: center;
+                gap: 7px;
+            }
+
+            .skill-list li:last-child {
+                border-bottom: none;
+            }
+
+            .skill-list li.skill-group-break {
+                margin-top: 8px;
+            }
+
+            .skill-dot {
+                width: 4px;
+                height: 4px;
+                border-radius: 50%;
+                background: var(--teal);
+                flex-shrink: 0;
+            }
+
+            /* ── SIDEBAR EDU / AWARDS ── */
+            .sidebar-card {
+                background: var(--bg2);
+                border-left: 2px solid var(--teal);
+                padding: 10px 12px;
+                margin-bottom: 10px;
+                border-radius: 0 4px 4px 0;
+            }
+
+            .sidebar-card-title {
+                font-family: "Playfair Display", serif;
+                font-size: 12px;
+                font-weight: 700;
+                color: var(--ink);
+                margin-bottom: 2px;
+            }
+
+            .sidebar-card-sub {
+                font-size: 9.5px;
+                font-weight: 500;
+                color: var(--ink-mid);
+                line-height: 1.6;
+            }
+
+            .sidebar-card-date {
+                font-size: 9px;
+                font-weight: 600;
+                color: var(--teal);
+                margin-top: 4px;
+                letter-spacing: 0.05em;
+            }
+
+            /* ── PROFILE SUMMARY ── */
+            .profile-text {
+                font-size: 11.5px;
+                font-weight: 400;
+                color: var(--ink-mid);
+                line-height: 1.85;
+            }
+
+            .profile-accent {
+                display: block;
+                width: 32px;
+                height: 2px;
+                background: var(--seafoam);
+                margin-top: 12px;
+            }
+
+            /* ── EXPERIENCE BLOCK ── */
+            .exp-block {
+                margin-bottom: 20px;
+                padding-bottom: 20px;
+                border-bottom: 1px solid var(--rule);
+            }
+            .exp-block:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+
+            .exp-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                margin-bottom: 5px;
+            }
+
+            .exp-logo-name {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            /* Company logo badges */
+            .logo-badge {
+                height: 22px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 4px;
+                padding: 0 7px;
+                flex-shrink: 0;
+            }
+
+            .logo-img {
+                display: block;
+                object-fit: contain;
+                flex-shrink: 0;
+            }
+
+            .logo-img-amazon {
+                height: 46px;
+                width: auto;
+                max-width: 130px;
+            }
+
+            .logo-img-ninjas {
+                height: 36px;
+                width: auto;
+            }
+
+            .logo-cl {
+                background: transparent;
+                border: none;
+                padding: 0;
+                gap: 6px;
+                align-items: center;
+            }
+
+            /* 4-square CRLV grid */
+            .cl-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                gap: 2.5px;
+                width: 32px;
+                height: 32px;
+                background: #111;
+                padding: 3.5px;
+                border-radius: 3px;
+                flex-shrink: 0;
+            }
+
+            .cl-grid span {
+                background: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: "Montserrat", sans-serif;
+                font-size: 7px;
+                font-weight: 800;
+                color: #111;
+                border-radius: 1px;
+                line-height: 1;
+            }
+
+            .logo-cl-name {
+                font-family: "Montserrat", sans-serif;
+                font-size: 11px;
+                font-weight: 700;
+                color: var(--ink);
+                letter-spacing: 0.01em;
+            }
+
+            .exp-company {
+                font-family: "Playfair Display", serif;
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--ink);
+                line-height: 1.1;
+            }
+
+            .exp-date {
+                font-size: 9px;
+                font-weight: 600;
+                color: var(--teal);
+                background: rgba(26, 143, 163, 0.09);
+                padding: 3px 8px;
+                border-radius: 20px;
+                white-space: nowrap;
+                flex-shrink: 0;
+                letter-spacing: 0.04em;
+            }
+
+            .exp-role {
+                font-family: "Playfair Display", serif;
+                font-size: 11px;
+                font-style: italic;
+                font-weight: 400;
+                color: var(--ink-mid);
+                margin-bottom: 8px;
+            }
+
+            .exp-bullets {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .exp-bullets li {
+                font-size: 11px;
+                font-weight: 400;
+                color: var(--ink-mid);
+                line-height: 1.6;
+                position: relative;
+                padding-left: 14px;
+            }
+
+            .exp-bullets li::before {
+                content: "–";
+                color: var(--seafoam);
+                font-weight: 600;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            /* ── EARLIER CAREER ── */
+            .earlier-list {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px 24px;
+            }
+
+            .earlier-item {
+                display: flex;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .earlier-emoji {
+                font-size: 14px;
+                line-height: 1;
+                flex-shrink: 0;
+                margin-top: 1px;
+            }
+
+            .earlier-text {
+            }
+            .earlier-role {
+                font-size: 11px;
+                font-weight: 500;
+                color: var(--ink);
+                line-height: 1.3;
+            }
+            .earlier-co {
+                font-size: 9.5px;
+                color: var(--ink-soft);
+                margin-top: 1px;
+            }
+
+            /* ── FOOTER ── */
+            footer {
+                background: #fff;
+                padding: 12px 48px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 6px;
+                border-top: 1.5px solid var(--rule);
+            }
+
+            .footer-item {
+                font-size: 9px;
+                font-weight: 400;
+                color: var(--ink-soft);
+                letter-spacing: 0.03em;
+            }
+
+            .footer-sep {
+                color: var(--seafoam);
+                font-size: 9px;
+            }
+
+            /* ── PRINT ── */
+            @media print {
+                body {
+                    background: #fff;
+                }
+                .page {
+                    box-shadow: none;
+                    width: 100%;
+                }
+                @page {
+                    margin: 0;
+                    size: letter;
+                }
+            }
+
+            @media screen {
+                body {
+                    background: #ddd;
+                    padding: 32px 0 64px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page">
+            <!-- ══ HEADER ══ -->
+            <header>
+                <div class="name-lockup">
+                    <div class="name-chelsea">Chelsea</div>
+                    <div class="name-rittenmyer">Rittenmyer</div>
+                </div>
+                <div class="header-right">
+                    <div class="header-title">
+                        Creative Director · Content Strategy &amp; Multimedia
+                        Production
+                    </div>
+                    <div class="header-tagline">
+                        Multimedia Production &amp; Creative
+                        Direction&nbsp;&nbsp;·&nbsp;&nbsp;Customer
+                        Education&nbsp;&nbsp;·&nbsp;&nbsp;Brand Storytelling
+                    </div>
+                    <div class="header-contacts">
+                        <span class="contact-item"
+                            ><a href="mailto:cpatthoff@gmail.com"
+                                >cpatthoff@gmail.com</a
+                            ></span
+                        >
+                        <span class="contact-sep">·</span>
+                        <span class="contact-item">crittenmyer.com</span>
+                        <span class="contact-sep">·</span>
+                        <span class="contact-item">Seattle, WA</span>
+                        <span class="contact-sep">·</span>
+                        <span class="contact-item"
+                            ><a
+                                href="https://www.linkedin.com/in/chelsea-rittenmyer-says-hello/"
+                                target="_blank"
+                                rel="noopener"
+                                style="color: var(--teal); font-weight: 600"
+                                >LinkedIn ↗</a
+                            ></span
+                        >
+                    </div>
+                </div>
+            </header>
+
+            <!-- ══ BODY ══ -->
+            <div class="body">
+                <!-- ── SIDEBAR ── -->
+                <aside class="sidebar">
+                    <div class="sidebar-section">
+                        <div class="section-label">Core Skills</div>
+                        <div class="section-rule"></div>
+                        <ul class="skill-list">
+                            <li>
+                                <span class="skill-dot"></span>Content Strategy
+                                Development
+                            </li>
+                            <li>
+                                <span class="skill-dot"></span>Product Launch
+                                Strategy
+                            </li>
+                            <li>
+                                <span class="skill-dot"></span>Online Education
+                                Strategy
+                            </li>
+                            <li>
+                                <span class="skill-dot"></span>Brand
+                                Storytelling
+                            </li>
+                            <li class="skill-group-break">
+                                <span class="skill-dot"></span>Video &amp;
+                                Content Production
+                            </li>
+                            <li>
+                                <span class="skill-dot"></span>Art Direction:
+                                Photo, Video &amp; Motion
+                            </li>
+                            <li>
+                                <span class="skill-dot"></span>Visual
+                                Storytelling
+                            </li>
+                            <li>
+                                <span class="skill-dot"></span>Copywriting &amp;
+                                Editing
+                            </li>
+                            <li>
+                                <span class="skill-dot"></span>Directing &amp;
+                                Interviewing
+                            </li>
+                            <li class="skill-group-break">
+                                <span class="skill-dot"></span>Creative Team
+                                Management
+                            </li>
+                            <li>
+                                <span class="skill-dot"></span>Editorial
+                                Oversight
+                            </li>
+                            <li>
+                                <span class="skill-dot"></span>Project
+                                Management
+                            </li>
+                            <li>
+                                <span class="skill-dot"></span>Campaign
+                                Execution
+                            </li>
+                            <li>
+                                <span class="skill-dot"></span>Budget Creation
+                                &amp; Management
+                            </li>
+                            <li class="skill-group-break">
+                                <span class="skill-dot"></span>Audience
+                                Engagement Analysis
+                            </li>
+                            <li>
+                                <span class="skill-dot"></span>AI-Driven
+                                Research &amp; Insight Analysis
+                            </li>
+                            <li>
+                                <span class="skill-dot"></span>AI-Enhanced
+                                Workflow Optimization
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <div class="section-label">Tools</div>
+                        <div class="section-rule"></div>
+                        <ul class="skill-list">
+                            <li>🎬 Adobe Premiere Pro</li>
+                            <li>🖼️ Adobe Photoshop</li>
+                            <li>✨ Adobe After Effects</li>
+                            <li>📊 Google Analytics</li>
+                            <li>📋 Microsoft Office</li>
+                            <li>📽️ PowerPoint / Keynote</li>
+                            <li class="skill-group-break">🤖 Amazon Bedrock</li>
+                            <li>🧠 Large Language Models</li>
+                            <li>⚡ Generative AI Tools</li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <div class="section-label">Education</div>
+                        <div class="section-rule"></div>
+                        <div class="sidebar-card">
+                            <div class="sidebar-card-title">
+                                University of Cincinnati
+                            </div>
+                            <div class="sidebar-card-sub">
+                                BFA · Electronic Media<br />
+                                Journalism Certificate<br />
+                                Media Communications
+                            </div>
+                            <div class="sidebar-card-date">2005 – 2009</div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <div class="section-label">Honors</div>
+                        <div class="section-rule"></div>
+                        <div class="sidebar-card">
+                            <div class="sidebar-card-title">
+                                🏆 David J. Clarke
+                            </div>
+                            <div class="sidebar-card-sub">
+                                Memorial Scholarship
+                            </div>
+                            <div class="sidebar-card-date">NATAS</div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- ── MAIN ── -->
+                <main class="main">
+                    <!-- Profile -->
+                    <div class="main-section">
+                        <div class="section-label">Profile</div>
+                        <div class="section-rule"></div>
+                        <p class="profile-text">
+                            Strategic and innovative content leader with
+                            <strong>16+ years</strong> of experience in
+                            multimedia production, online education, and digital
+                            content. Translates customer insights, brand
+                            strategy, and executive vision into product roadmaps
+                            grounded in research and audience data. Adept at
+                            balancing emerging digital trends with operational
+                            realities and budget constraints, leading projects
+                            from concept through launch. Proven expertise in
+                            strategic planning,
+                            <strong>cross-functional team leadership</strong>,
+                            and end-to-end execution across
+                            <strong>Amazon Devices</strong>, online education
+                            platforms, and global broadcast production.
+                        </p>
+                        <span class="profile-accent"></span>
+                    </div>
+
+                    <!-- Experience -->
+                    <div class="main-section">
+                        <div class="section-label">Experience</div>
+                        <div class="section-rule"></div>
+
+                        <!-- Amazon -->
+                        <div class="exp-block">
+                            <div class="exp-header">
+                                <div class="exp-logo-name">
+                                    <!-- Amazon logo -->
+                                    <img
+                                        src="assets/images/amazon-logo.png"
+                                        alt="Amazon"
+                                        class="logo-img logo-img-amazon"
+                                    />
+                                </div>
+                                <span class="exp-date">2019 – Present</span>
+                            </div>
+                            <div class="exp-role">
+                                Creative Director — Amazon Devices &amp; Digital
+                            </div>
+                            <ul class="exp-bullets">
+                                <li>
+                                    Led creative direction for animated and
+                                    live-action video campaigns for Amazon
+                                    Devices and Digital products, delivering
+                                    <strong>1.5k videos (+11% YOY)</strong>
+                                    viewed <strong>16.5M times</strong> across
+                                    18 marketplaces.
+                                </li>
+                                <li>
+                                    Conceptualized educational onboarding for
+                                    customers,
+                                    <strong
+                                        >reducing support contacts by 7%</strong
+                                    >
+                                    and increasing engagement within customers'
+                                    first 30 days.
+                                </li>
+                                <li>
+                                    Created production mechanisms and
+                                    streamlining that enabled more
+                                    experimentation while
+                                    <strong>saving $1.4M</strong> in external
+                                    production costs.
+                                </li>
+                                <li>
+                                    Led creative on Alexa+ How To Campaign
+                                    resulting in
+                                    <strong>12% increased engagement</strong> on
+                                    product.
+                                </li>
+                                <li>
+                                    Developed first-run video on Fire Tablet
+                                    raising awareness of features and increasing
+                                    engagement within first 30 days of purchase.
+                                </li>
+                                <li>
+                                    Mentored and developed a creative team,
+                                    implementing brand strategy and design
+                                    standards to improve efficiency and
+                                    creativity.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- CL Director -->
+                        <div class="exp-block">
+                            <div class="exp-header">
+                                <div class="exp-logo-name">
+                                    <div class="logo-badge logo-cl">
+                                        <div class="cl-grid">
+                                            <span>C</span><span>R</span
+                                            ><span>L</span><span>V</span>
+                                        </div>
+                                        <span class="logo-cl-name"
+                                            >CreativeLive</span
+                                        >
+                                    </div>
+                                </div>
+                                <span class="exp-date">2018 – 2019</span>
+                            </div>
+                            <div class="exp-role">Director of Content</div>
+                            <ul class="exp-bullets">
+                                <li>
+                                    Built and led end-to-end content operations
+                                    from concept through reporting, including
+                                    acquisition and programming strategy.
+                                </li>
+                                <li>
+                                    Drove strategic initiatives aligned to
+                                    brand, audience segments, and business
+                                    goals.
+                                </li>
+                                <li>
+                                    Expanded curriculum and product offerings to
+                                    support revenue growth and increase traffic.
+                                </li>
+                                <li>
+                                    Led cross-functional creative teams and
+                                    budgets to deliver high-impact content
+                                    launches.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- CL ACD -->
+                        <div class="exp-block">
+                            <div class="exp-header">
+                                <div class="exp-logo-name">
+                                    <div class="logo-badge logo-cl">
+                                        <div class="cl-grid">
+                                            <span>C</span><span>R</span
+                                            ><span>L</span><span>V</span>
+                                        </div>
+                                        <span class="logo-cl-name"
+                                            >CreativeLive</span
+                                        >
+                                    </div>
+                                </div>
+                                <span class="exp-date"
+                                    >Dec 2017 – Dec 2018</span
+                                >
+                            </div>
+                            <div class="exp-role">
+                                Associate Creative Director
+                            </div>
+                            <ul class="exp-bullets">
+                                <li>
+                                    Led creative rebrand from concept to
+                                    execution, translating complex ideas into
+                                    compelling print and digital experiences.
+                                </li>
+                                <li>
+                                    Oversaw editorial and full production
+                                    lifecycle, managing internal teams and
+                                    external motion, video, and copy talent.
+                                </li>
+                                <li>
+                                    Shaped visual direction for photo and video
+                                    classes while maintaining profitability.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- CL EP -->
+                        <div class="exp-block">
+                            <div class="exp-header">
+                                <div class="exp-logo-name">
+                                    <div class="logo-badge logo-cl">
+                                        <div class="cl-grid">
+                                            <span>C</span><span>R</span
+                                            ><span>L</span><span>V</span>
+                                        </div>
+                                        <span class="logo-cl-name"
+                                            >CreativeLive</span
+                                        >
+                                    </div>
+                                </div>
+                                <span class="exp-date"
+                                    >Aug 2015 – Dec 2017</span
+                                >
+                            </div>
+                            <div class="exp-role">
+                                Executive Producer — Photo &amp; Video
+                            </div>
+                            <ul class="exp-bullets">
+                                <li>
+                                    Built and scaled a high-performing
+                                    Post-Production department, hiring and
+                                    leading a multidisciplinary team.
+                                </li>
+                                <li>
+                                    Sourced top-tier instructors and formed
+                                    strategic partnerships with YouTube and
+                                    Vimeo.
+                                </li>
+                                <li>
+                                    Directed post-production operations while
+                                    maintaining exceptional creative standards.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Code Ninjas -->
+                        <div class="exp-block">
+                            <div class="exp-header">
+                                <div class="exp-logo-name">
+                                    <!-- Code Ninjas logo -->
+                                    <img
+                                        src="assets/images/code-ninjas-logo.png"
+                                        alt="Code Ninjas"
+                                        class="logo-img logo-img-ninjas"
+                                    />
+                                </div>
+                                <span class="exp-date">2021 – Present</span>
+                            </div>
+                            <div class="exp-role">
+                                Co-Owner &amp; Franchise Operator
+                            </div>
+                            <ul class="exp-bullets">
+                                <li>
+                                    Own and operate an after-school coding and
+                                    STEM center franchise for children ages
+                                    5–14.
+                                </li>
+                                <li>
+                                    Maintain staffing, community relationships,
+                                    and lead localized marketing efforts.
+                                </li>
+                                <li>
+                                    Lead the culture of the center to ensure
+                                    children and families continually have fun,
+                                    learn, and stay engaged with the curriculum.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Earlier Career -->
+                    <div class="main-section">
+                        <div class="section-label">Earlier Career</div>
+                        <div class="section-rule"></div>
+                        <div class="earlier-list">
+                            <div class="earlier-item">
+                                <span class="earlier-emoji">📹</span>
+                                <div class="earlier-text">
+                                    <div class="earlier-role">
+                                        Managing Post-Production Supervisor
+                                    </div>
+                                    <div class="earlier-co">
+                                        CreativeLive, Seattle WA · 2012 – 2015
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="earlier-item">
+                                <span class="earlier-emoji">🎬</span>
+                                <div class="earlier-text">
+                                    <div class="earlier-role">
+                                        Producer &amp; Art Director
+                                    </div>
+                                    <div class="earlier-co">
+                                        Geo Rittenmyer Visuals · 2010 – 2018
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="earlier-item">
+                                <span class="earlier-emoji">📺</span>
+                                <div class="earlier-text">
+                                    <div class="earlier-role">
+                                        Coordinating Producer
+                                    </div>
+                                    <div class="earlier-co">
+                                        A&amp;E Hoarders · Screaming Flea
+                                        Productions · Fall 2011
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="earlier-item">
+                                <span class="earlier-emoji">🎥</span>
+                                <div class="earlier-text">
+                                    <div class="earlier-role">
+                                        Broadcast Coordinator &amp;
+                                        Post-Production Producer
+                                    </div>
+                                    <div class="earlier-co">
+                                        Feld Entertainment, Inc. · 2009 – 2011
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="earlier-item">
+                                <span class="earlier-emoji">🎞️</span>
+                                <div class="earlier-text">
+                                    <div class="earlier-role">
+                                        Associate Producer
+                                    </div>
+                                    <div class="earlier-co">
+                                        And Now Productions · 2009
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="earlier-item">
+                                <span class="earlier-emoji">🎞️</span>
+                                <div class="earlier-text">
+                                    <div class="earlier-role">
+                                        Freelance Production Coordinator &amp;
+                                        Assistant
+                                    </div>
+                                    <div class="earlier-co">
+                                        Lightborne · 2008 – 2009
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="earlier-item">
+                                <span class="earlier-emoji">🎨</span>
+                                <div class="earlier-text">
+                                    <div class="earlier-role">
+                                        On-Site Coordinator, Young Artists
+                                        Summer Workshop
+                                    </div>
+                                    <div class="earlier-co">
+                                        The Arts Centre · 2005 – 2006
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="earlier-item">
+                                <span class="earlier-emoji">🎓</span>
+                                <div class="earlier-text">
+                                    <div class="earlier-role">
+                                        Production Staff
+                                    </div>
+                                    <div class="earlier-co">
+                                        University of Cincinnati · 2008
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+
+            <!-- ══ FOOTER ══ -->
+            <footer>
+                <span class="footer-item"
+                    ><a href="mailto:cpatthoff@gmail.com"
+                        >cpatthoff@gmail.com</a
+                    ></span
+                >
+                <span class="footer-sep">·</span>
+                <span class="footer-item">crittenmyer.com</span>
+                <span class="footer-sep">·</span>
+                <span class="footer-item">(304) 279-3159</span>
+                <span class="footer-sep">·</span>
+            </footer>
+        </div>
+    </body>
+</html>
