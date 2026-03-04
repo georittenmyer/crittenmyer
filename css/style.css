@@ -418,26 +418,24 @@ nav.scrolled .nav-toggle span {
 .video-embed-wrap {
     overflow: hidden;
     background: #dde5ea;
+    position: relative;
 }
-@keyframes videoBlink {
-    0% {
-        opacity: 1;
-    }
-    30% {
-        opacity: 0.35;
-    }
-    100% {
-        opacity: 1;
-    }
+.video-embed-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 143, 163, 0);
+    transition: background 0.3s ease;
+    pointer-events: none;
+}
+.video-card:hover .video-embed-wrap::after {
+    background: rgba(26, 143, 163, 0.22);
 }
 .video-embed {
     width: 100%;
     aspect-ratio: 16/9;
     border: none;
     display: block;
-}
-.video-card:hover .video-embed {
-    animation: videoBlink 0.5s ease-out forwards;
 }
 .video-meta {
     padding: 1rem 0 0;
