@@ -772,6 +772,9 @@ footer {
     .nav-links.open {
         display: flex;
     }
+    .nav-links.open a {
+        color: var(--ink-mid);
+    }
     .nav-toggle {
         display: flex;
     }
