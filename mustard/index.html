@@ -34,7 +34,6 @@
                 right: 0;
                 bottom: 0;
                 background: linear-gradient(135deg, #1a8fa3 0%, #4ecdc4 100%);
-                display: flex;
                 align-items: center;
                 justify-content: center;
                 z-index: 1000;
@@ -460,7 +459,7 @@
     </head>
     <body>
         <!-- Login Screen -->
-        <div id="loginScreen" class="login-screen active">
+        <div id="loginScreen" class="login-screen">
             <div class="login-box">
                 <h1>🔐 Resume Customizer</h1>
                 <p>Enter password to customize</p>
@@ -476,7 +475,7 @@
         </div>
 
         <!-- Main App -->
-        <div id="app" style="display: none">
+        <div id="app">
             <div class="container">
                 <header>
                     <div>
@@ -1135,6 +1134,11 @@
                     e.preventDefault();
                     openSaveModal();
                 }
+            });
+
+            // Initialize on page load
+            window.addEventListener("DOMContentLoaded", () => {
+                loadResume();
             });
         </script>
     </body>
