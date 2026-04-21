@@ -649,13 +649,17 @@
             // ──────────────────────────────────────────
             function login() {
                 const password = document.getElementById("passwordInput").value;
+                console.log("Attempting login with:", password);
                 if (password === PASSWORD) {
+                    console.log("Password correct!");
                     document
                         .getElementById("loginScreen")
                         .classList.remove("active");
                     document.getElementById("app").style.display = "block";
+                    console.log("UI updated, calling loadResume...");
                     loadResume();
                 } else {
+                    console.log("Password incorrect");
                     document.getElementById("loginError").textContent =
                         "Incorrect password";
                     document.getElementById("loginError").style.display =
