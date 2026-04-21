@@ -1,0 +1,204 @@
+{
+  "personal": {
+    "firstName": "Chelsea",
+    "lastName": "Rittenmyer",
+    "title": "Creative Director · Content Strategy & Multimedia Production",
+    "tagline": "Multimedia Production & Creative Direction  ·  Customer Education  ·  Brand Storytelling",
+    "location": "Seattle, WA",
+    "website": "crittenmyer.com",
+    "websiteUrl": "http://crittenmyer.com",
+    "email": "cpatthoff@gmail.com",
+    "emailUrl": "mailto:cpatthoff@gmail.com",
+    "phone": "(304) 279-3159",
+    "linkedin": "https://www.linkedin.com/in/chelsea-rittenmyer-says-hello/",
+    "profileImage": "assets/images/chelsea-hero.jpg"
+  },
+
+  "profile": {
+    "text": "Strategic and innovative content leader with <strong>16+ years</strong> of experience in multimedia production, online education, and digital content. Translates customer insights, brand strategy, and executive vision into product roadmaps grounded in research and audience data. Adept at balancing emerging digital trends with operational realities and budget constraints, leading projects from concept through launch. Proven expertise in strategic planning, <strong>cross-functional team leadership</strong>, and end-to-end execution across <strong>Amazon Devices</strong>, online education platforms, and global broadcast production."
+  },
+
+  "skills": [
+    {
+      "category": "Core Skills",
+      "items": [
+        "Content Strategy Development",
+        "Product Launch Strategy",
+        "Online Education Strategy",
+        "Brand Storytelling",
+        "Video & Content Production",
+        "Art Direction: Photo, Video & Motion",
+        "Visual Storytelling",
+        "Copywriting & Editing",
+        "Directing & Interviewing",
+        "Creative Team Management",
+        "Editorial Oversight",
+        "Project Management",
+        "Campaign Execution",
+        "Budget Creation & Management",
+        "Audience Engagement Analysis",
+        "AI-Driven Research & Insight Analysis",
+        "AI-Enhanced Workflow Optimization"
+      ]
+    },
+    {
+      "category": "Tools",
+      "items": [
+        "🎬 Adobe Premiere Pro",
+        "🖼️ Adobe Photoshop",
+        "✨ Adobe After Effects",
+        "📊 Google Analytics",
+        "📋 Microsoft Office",
+        "📽️ PowerPoint / Keynote",
+        "🤖 Amazon Bedrock",
+        "🧠 Large Language Models",
+        "⚡ Generative AI Tools"
+      ]
+    }
+  ],
+
+  "education": [
+    {
+      "institution": "University of Cincinnati",
+      "degree": "BFA",
+      "field": "Electronic Media",
+      "additional": "Journalism Certificate, Media Communications",
+      "year": "2005 – 2009"
+    }
+  ],
+
+  "honors": [
+    {
+      "title": "🏆 David J. Clarke Memorial Scholarship",
+      "organization": "NATAS"
+    }
+  ],
+
+  "experience": [
+    {
+      "company": "Amazon",
+      "companyLogo": "assets/images/amazon-logo.png",
+      "logoType": "image",
+      "position": "Creative Director — Amazon Devices & Digital",
+      "startDate": "2019",
+      "endDate": "Present",
+      "dateRange": "2019 – Present",
+      "bullets": [
+        "Led creative direction for animated and live-action video campaigns for Amazon Devices and Digital products, delivering <strong>1.5k videos (+11% YOY)</strong> viewed <strong>16.5M times</strong> across 18 marketplaces.",
+        "Conceptualized educational onboarding for customers, <strong>reducing support contacts by 7%</strong> and increasing engagement within customers' first 30 days.",
+        "Created production mechanisms and streamlining that enabled more experimentation while <strong>saving $1.4M</strong> in external production costs.",
+        "Led creative on Alexa+ How To Campaign resulting in <strong>12% increased engagement</strong> on product.",
+        "Developed first-run video on Fire Tablet raising awareness of features and increasing engagement within first 30 days of purchase.",
+        "Mentored and developed a creative team, implementing brand strategy and design standards to improve efficiency and creativity."
+      ]
+    },
+    {
+      "company": "CreativeLive",
+      "companyLogo": "creativelive",
+      "logoType": "custom",
+      "position": "Director of Content",
+      "startDate": "2018",
+      "endDate": "2019",
+      "dateRange": "2018 – 2019",
+      "bullets": [
+        "Built and led end-to-end content operations from concept through reporting, including acquisition and programming strategy.",
+        "Drove strategic initiatives aligned to brand, audience segments, and business goals.",
+        "Expanded curriculum and product offerings to support revenue growth and increase traffic.",
+        "Led cross-functional creative teams and budgets to deliver high-impact content launches."
+      ]
+    },
+    {
+      "company": "CreativeLive",
+      "companyLogo": "creativelive",
+      "logoType": "custom",
+      "position": "Associate Creative Director",
+      "startDate": "Dec 2017",
+      "endDate": "Dec 2018",
+      "dateRange": "Dec 2017 – Dec 2018",
+      "bullets": [
+        "Led creative rebrand from concept to execution, translating complex ideas into compelling print and digital experiences.",
+        "Oversaw editorial and full production lifecycle, managing internal teams and external motion, video, and copy talent.",
+        "Shaped visual direction for photo and video classes while maintaining profitability."
+      ]
+    },
+    {
+      "company": "CreativeLive",
+      "companyLogo": "creativelive",
+      "logoType": "custom",
+      "position": "Executive Producer — Photo & Video",
+      "startDate": "Aug 2015",
+      "endDate": "Dec 2017",
+      "dateRange": "Aug 2015 – Dec 2017",
+      "bullets": [
+        "Built and scaled a high-performing Post-Production department, hiring and leading a multidisciplinary team.",
+        "Sourced top-tier instructors and formed strategic partnerships with YouTube and Vimeo.",
+        "Directed post-production operations while maintaining exceptional creative standards."
+      ]
+    },
+    {
+      "company": "Code Ninjas",
+      "companyLogo": "assets/images/code-ninjas-logo.png",
+      "logoType": "image",
+      "position": "Co-Owner & Franchise Operator",
+      "startDate": "2021",
+      "endDate": "Present",
+      "dateRange": "2021 – Present",
+      "bullets": [
+        "Own and operate an after-school coding and STEM center franchise for children ages 5–14.",
+        "Maintain staffing, community relationships, and lead localized marketing efforts.",
+        "Lead the culture of the center to ensure children and families continually have fun, learn, and stay engaged with the curriculum."
+      ]
+    }
+  ],
+
+  "earlierCareer": [
+    {
+      "emoji": "📹",
+      "position": "Managing Post-Production Supervisor",
+      "company": "CreativeLive, Seattle WA",
+      "dateRange": "2012 – 2015"
+    },
+    {
+      "emoji": "🎬",
+      "position": "Producer & Art Director",
+      "company": "Geo Rittenmyer Visuals",
+      "dateRange": "2010 – 2018"
+    },
+    {
+      "emoji": "📺",
+      "position": "Coordinating Producer",
+      "company": "A&E Hoarders · Screaming Flea Productions",
+      "dateRange": "Fall 2011"
+    },
+    {
+      "emoji": "🎥",
+      "position": "Broadcast Coordinator & Post-Production Producer",
+      "company": "Feld Entertainment, Inc.",
+      "dateRange": "2009 – 2011"
+    },
+    {
+      "emoji": "🎞️",
+      "position": "Associate Producer",
+      "company": "And Now Productions",
+      "dateRange": "2009"
+    },
+    {
+      "emoji": "🎞️",
+      "position": "Freelance Production Coordinator & Assistant",
+      "company": "Lightborne",
+      "dateRange": "2008 – 2009"
+    },
+    {
+      "emoji": "🎨",
+      "position": "On-Site Coordinator, Young Artists Summer Workshop",
+      "company": "The Arts Centre",
+      "dateRange": "2005 – 2006"
+    },
+    {
+      "emoji": "🎓",
+      "position": "Production Staff",
+      "company": "University of Cincinnati",
+      "dateRange": "2008"
+    }
+  ]
+}
