@@ -652,10 +652,12 @@
                 console.log("Attempting login with:", password);
                 if (password === PASSWORD) {
                     console.log("Password correct!");
-                    document
-                        .getElementById("loginScreen")
-                        .classList.remove("active");
-                    document.getElementById("app").style.display = "block";
+                    const loginScreen = document.getElementById("loginScreen");
+                    const app = document.getElementById("app");
+                    console.log("loginScreen:", loginScreen);
+                    console.log("app:", app);
+                    loginScreen.style.display = "none";
+                    app.style.display = "block";
                     console.log("UI updated, calling loadResume...");
                     loadResume();
                 } else {
