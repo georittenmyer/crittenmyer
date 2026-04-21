@@ -708,15 +708,22 @@
             // RENDER EDITOR
             // ──────────────────────────────────────────
             function renderEditor() {
-                if (!resumeData) return;
+                console.log("renderEditor called");
+                if (!resumeData) {
+                    console.log("No resume data!");
+                    return;
+                }
 
-                // Title & Tagline
-                document.getElementById("title").value =
-                    resumeData.personal.title || "";
-                document.getElementById("tagline").value =
-                    resumeData.personal.tagline || "";
-                document.getElementById("profileText").value =
-                    resumeData.profile.text || "";
+                try {
+                    // Title & Tagline
+                    console.log("Setting title/tagline...");
+                    document.getElementById("title").value =
+                        resumeData.personal.title || "";
+                    document.getElementById("tagline").value =
+                        resumeData.personal.tagline || "";
+                    document.getElementById("profileText").value =
+                        resumeData.profile.text || "";
+                    console.log("Title/tagline set");
 
                 // Skills
                 const skillsContainer = document.getElementById("skillsList");
@@ -725,12 +732,18 @@
                     skillsContainer.appendChild(createSkillItem(skill, idx));
                 });
 
-                // Experience
-                const expContainer = document.getElementById("experienceList");
-                expContainer.innerHTML = "";
-                resumeData.experience.forEach((job, idx) => {
-                    expContainer.appendChild(createExperienceItem(job, idx));
-                });
+                    // Experience
+                    console.log("Setting experience...");
+                    const expContainer = document.getElementById("experienceList");
+                    expContainer.innerHTML = "";
+                    resumeData.experience.forEach((job, idx) => {
+                        expContainer.appendChild(createExperienceItem(job, idx));
+                    });
+                    console.log("renderEditor complete!");
+                } catch (e) {
+                    console.error("renderEditor error:", e);
+                    throw e;
+                }
             }
 
             function createSkillItem(skill, idx) {
