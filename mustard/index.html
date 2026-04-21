@@ -11,6 +11,11 @@
                 box-sizing: border-box;
             }
 
+            html, body {
+                width: 100%;
+                height: 100%;
+            }
+
             body {
                 font-family:
                     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -20,9 +25,11 @@
             }
 
             .container {
-                max-width: 1600px;
-                margin: 0 auto;
-                padding: 20px;
+                max-width: none;
+                margin: 0;
+                padding: 15px;
+                width: 100%;
+                overflow-x: hidden;
             }
 
             /* ── LOGIN SCREEN ── */
@@ -101,9 +108,9 @@
             /* ── HEADER ── */
             header {
                 background: white;
-                padding: 20px;
+                padding: 15px;
                 border-bottom: 2px solid #1a8fa3;
-                margin-bottom: 20px;
+                margin-bottom: 15px;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -167,20 +174,18 @@
             .layout {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 20px;
+                gap: 15px;
+                width: 100%;
             }
 
-            @media (max-width: 1200px) {
-                .layout {
-                    grid-template-columns: 1fr;
-                }
-            }
 
             /* ── EDITOR PANEL ── */
             .editor-panel {
                 background: white;
-                padding: 20px;
+                padding: 15px;
                 border-radius: 4px;
+                overflow-y: auto;
+                max-height: 90vh;
             }
 
             .section {
@@ -300,8 +305,7 @@
                 display: flex;
                 flex-direction: column;
                 max-height: 90vh;
-                position: sticky;
-                top: 20px;
+                min-width: 0;
             }
 
             .preview-header {
@@ -837,146 +841,450 @@
 
                 // Generate preview HTML
                 const html = generateResumeHTML(resumeData);
-                document.getElementById("previewContent").innerHTML = html;
+                const previewContent = document.getElementById("previewContent");
+                previewContent.innerHTML = '';
+
+                // Create iframe to isolate styles
+                const iframe = document.createElement('iframe');
+                iframe.className = 'preview-iframe';
+                iframe.setAttribute('sandbox', 'allow-same-origin');
+                previewContent.appendChild(iframe);
+
+                // Write to iframe
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                iframeDoc.open();
+                iframeDoc.write(html);
+                iframeDoc.close();
             }
 
             function generateResumeHTML(data) {
                 return `
                 <style>
-                    * { margin: 0; padding: 0; box-sizing: border-box; }
-                    body {
-                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-                        line-height: 1.6;
-                        color: #0d1f2d;
-                        background: white;
+                    :root {
+                        --bg: #f7f4f0;
+                        --bg2: #eeeae4;
+                        --ink: #0d1f2d;
+                        --ink-mid: #4a5a66;
+                        --ink-soft: #8a9aa6;
+                        --teal: #1a8fa3;
+                        --seafoam: #4ecdc4;
+                        --rule: rgba(13, 31, 45, 0.1);
                     }
-                    .container { display: grid; grid-template-columns: 220px 1fr; gap: 30px; padding: 40px; max-width: 900px; }
-                    .sidebar { border-right: 2px solid #4ecdc4; padding-right: 20px; }
-                    .main { }
 
-                    h1 { font-size: 28px; color: #1a8fa3; margin-bottom: 4px; font-weight: 700; }
-                    .tagline { font-size: 12px; color: #4ecdc4; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+                    *, *::before, *::after {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                    }
 
-                    h2 {
-                        font-size: 12px;
-                        color: #0d1f2d;
-                        text-transform: uppercase;
-                        letter-spacing: 1px;
-                        margin-top: 25px;
-                        margin-bottom: 12px;
+                    body {
+                        background: #fff;
+                        color: var(--ink);
+                        font-family: "Montserrat", sans-serif;
+                        font-size: 10.5px;
+                        line-height: 1.42;
+                    }
+
+                    .page {
+                        width: 850px;
+                        height: 11in;
+                        margin: 0 auto;
+                        background: #fff;
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    header {
+                        background: #fff;
+                        padding: 31px 42px 9px 42px;
+                        position: relative;
+                        overflow: hidden;
                         display: flex;
                         align-items: center;
-                        gap: 8px;
+                        justify-content: flex-start;
+                        gap: 18px;
+                        border-bottom: 2px solid var(--teal);
                     }
-                    h2::before { content: ''; width: 4px; height: 14px; background: #1a8fa3; border-radius: 2px; }
+
+                    .name-lockup {
+                        position: relative;
+                        z-index: 1;
+                        flex-shrink: 0;
+                    }
+
+                    .name-chelsea {
+                        font-family: "Playfair Display", serif;
+                        font-size: 50px;
+                        font-style: italic;
+                        font-weight: 900;
+                        color: #0a1a24;
+                        line-height: 0.9;
+                        letter-spacing: -0.01em;
+                        display: inline-block;
+                    }
+
+                    .name-rittenmyer {
+                        font-family: "Montserrat", sans-serif;
+                        font-size: 12.5px;
+                        font-weight: 500;
+                        color: var(--ink-soft);
+                        letter-spacing: 0.48em;
+                        text-transform: uppercase;
+                        margin-top: 1px;
+                        text-align: center;
+                    }
+
+                    .header-right {
+                        position: relative;
+                        z-index: 1;
+                        text-align: right;
+                        flex: 1;
+                    }
+
+                    .header-title {
+                        font-family: "Montserrat", sans-serif;
+                        font-size: 9.5pt;
+                        font-weight: 700;
+                        letter-spacing: 0.18em;
+                        text-transform: uppercase;
+                        color: var(--seafoam);
+                        margin-bottom: 6px;
+                    }
+
+                    .header-tagline {
+                        font-size: 9.5px;
+                        font-weight: 500;
+                        color: var(--ink-mid);
+                        margin-bottom: 10px;
+                        letter-spacing: 0.02em;
+                    }
+
+                    .header-contacts {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 4px 0;
+                        justify-content: flex-end;
+                    }
+
+                    .contact-item {
+                        font-size: 10px;
+                        font-weight: 500;
+                        color: var(--ink-mid);
+                        letter-spacing: 0.02em;
+                    }
+
+                    .contact-sep {
+                        color: var(--seafoam);
+                        margin: 0 7px;
+                        font-size: 10px;
+                    }
+
+                    .body {
+                        display: grid;
+                        grid-template-columns: 210px 1fr;
+                        flex: 1;
+                        overflow: hidden;
+                    }
+
+                    .sidebar {
+                        background: #fafaf9;
+                        padding: 15px 16px 15px 20px;
+                        border-right: 1px solid var(--rule);
+                        display: flex;
+                        flex-direction: column;
+                        overflow-y: auto;
+                    }
+
+                    .main {
+                        background: #fff;
+                        padding: 15px 26px 15px 22px;
+                        display: flex;
+                        flex-direction: column;
+                        overflow-y: auto;
+                    }
+
+                    .section-label {
+                        font-size: 7px;
+                        font-weight: 600;
+                        letter-spacing: 0.42em;
+                        text-transform: uppercase;
+                        color: var(--teal);
+                        margin-bottom: 4px;
+                    }
+
+                    .section-rule {
+                        height: 1px;
+                        background: var(--rule);
+                        margin-bottom: 6px;
+                    }
+
+                    .sidebar-section {
+                        margin-bottom: 8px;
+                    }
+
+                    .main-section {
+                        margin-bottom: 7px;
+                    }
+
+                    .skill-list {
+                        list-style: none;
+                    }
+
+                    .skill-list li {
+                        font-size: 10px;
+                        font-weight: 400;
+                        color: var(--ink-mid);
+                        padding: 2.5px 0;
+                        border-bottom: 1px solid var(--rule);
+                        display: flex;
+                        align-items: center;
+                        gap: 7px;
+                    }
+
+                    .skill-list li:last-child {
+                        border-bottom: none;
+                    }
+
+                    .skill-dot {
+                        width: 4px;
+                        height: 4px;
+                        border-radius: 50%;
+                        background: var(--teal);
+                        flex-shrink: 0;
+                    }
+
+                    .sidebar-card {
+                        background: var(--bg2);
+                        border-left: 2px solid var(--teal);
+                        padding: 7px 10px;
+                        margin-bottom: 7px;
+                        border-radius: 0 4px 4px 0;
+                    }
+
+                    .sidebar-card-title {
+                        font-family: "Playfair Display", serif;
+                        font-size: 11px;
+                        font-weight: 700;
+                        color: var(--ink);
+                        margin-bottom: 2px;
+                    }
+
+                    .sidebar-card-sub {
+                        font-size: 9px;
+                        font-weight: 500;
+                        color: var(--ink-mid);
+                        line-height: 1.5;
+                    }
+
+                    .sidebar-card-date {
+                        font-size: 8px;
+                        font-weight: 600;
+                        color: var(--teal);
+                        margin-top: 2px;
+                        letter-spacing: 0.05em;
+                    }
 
                     .profile-text {
-                        font-size: 13px;
-                        line-height: 1.7;
-                        margin-bottom: 20px;
-                    }
-                    .profile-text strong { color: #1a8fa3; font-weight: 600; }
-
-                    .skills-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-                    .skill-item {
-                        font-size: 12px;
-                        padding: 6px 0;
-                        color: #333;
+                        font-size: 10.5px;
+                        font-weight: 400;
+                        color: var(--ink-mid);
+                        line-height: 1.55;
                     }
 
-                    .tools-section h3 { font-size: 11px; color: #666; text-transform: uppercase; margin-top: 15px; margin-bottom: 8px; letter-spacing: 0.5px; }
+                    .profile-accent {
+                        display: block;
+                        width: 32px;
+                        height: 2px;
+                        background: var(--seafoam);
+                        margin-top: 6px;
+                    }
 
-                    .experience { margin-bottom: 20px; }
-                    .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
-                    .exp-position { font-size: 13px; font-weight: 700; color: #0d1f2d; }
-                    .exp-company { font-size: 12px; color: #1a8fa3; }
-                    .exp-date { font-size: 11px; color: #999; }
-                    .exp-bullets { list-style: none; margin: 8px 0 0 0; padding: 0; }
-                    .exp-bullets li { font-size: 12px; color: #333; margin-bottom: 6px; padding-left: 12px; position: relative; line-height: 1.5; }
-                    .exp-bullets li::before { content: '◆'; position: absolute; left: 0; color: #4ecdc4; font-size: 8px; top: 4px; }
+                    .exp-block {
+                        margin-bottom: 8px;
+                        padding-bottom: 8px;
+                        border-bottom: 1px solid var(--rule);
+                    }
 
-                    .education { margin-top: 15px; }
-                    .edu-item { font-size: 12px; margin-bottom: 8px; }
-                    .edu-degree { font-weight: 600; color: #0d1f2d; }
-                    .edu-info { font-size: 11px; color: #666; margin-top: 2px; }
+                    .exp-block:last-child {
+                        border-bottom: none;
+                        margin-bottom: 0;
+                    }
 
-                    .honors { margin-top: 15px; }
-                    .honor-item { font-size: 12px; color: #333; margin-bottom: 8px; }
+                    .exp-header {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-bottom: 2px;
+                    }
 
-                    .contact-info { font-size: 11px; color: #666; line-height: 1.8; margin-bottom: 20px; }
-                    .contact-info a { color: #1a8fa3; text-decoration: none; }
+                    .exp-date {
+                        font-size: 9.5px;
+                        color: var(--ink-mid);
+                        font-weight: 500;
+                    }
+
+                    .exp-role {
+                        font-size: 10.5px;
+                        font-weight: 600;
+                        color: var(--ink);
+                        margin-bottom: 4px;
+                    }
+
+                    .exp-bullets {
+                        list-style: none;
+                        margin: 4px 0 0 0;
+                        padding: 0;
+                    }
+
+                    .exp-bullets li {
+                        font-size: 10px;
+                        color: var(--ink-mid);
+                        margin-bottom: 3px;
+                        padding-left: 10px;
+                        position: relative;
+                        line-height: 1.35;
+                    }
+
+                    .exp-bullets li::before {
+                        content: '◆';
+                        position: absolute;
+                        left: 0;
+                        color: var(--seafoam);
+                        font-size: 5px;
+                        top: 4px;
+                    }
+
+                    footer {
+                        background: #fff;
+                        padding: 12px 42px;
+                        border-top: 1px solid var(--rule);
+                        text-align: center;
+                        font-size: 10px;
+                        color: var(--ink-mid);
+                        flex-shrink: 0;
+                        margin-top: auto;
+                    }
+
+                    a {
+                        color: var(--teal);
+                        text-decoration: none;
+                        font-weight: 600;
+                    }
                 </style>
 
-                <div class="container">
-                    <div class="sidebar">
-                        <div class="contact-info">
-                            ${data.personal.location ? `<div>${data.personal.location}</div>` : ""}
-                            ${data.personal.phone ? `<div>${data.personal.phone}</div>` : ""}
-                            ${data.personal.email ? `<div><a href="${data.personal.emailUrl}">${data.personal.email}</a></div>` : ""}
-                            ${data.personal.website ? `<div><a href="${data.personal.websiteUrl}">${data.personal.website}</a></div>` : ""}
-                            ${data.personal.linkedin ? `<div><a href="${data.personal.linkedin}">LinkedIn</a></div>` : ""}
+                <div class="page">
+                    <header>
+                        <div class="name-lockup">
+                            <div class="name-chelsea">Chelsea</div>
+                            <div class="name-rittenmyer">Rittenmyer</div>
                         </div>
-
-                        <h2>Skills</h2>
-                        <div class="skills-grid">
-                            ${data.skills[0].items.map(s => `<div class="skill-item">• ${s}</div>`).join("")}
+                        <div class="header-right">
+                            <div class="header-title">${data.personal.title || ''}</div>
+                            <div class="header-tagline">${data.personal.tagline || ''}</div>
+                            <div class="header-contacts">
+                                ${data.personal.location ? `<span class="contact-item">${data.personal.location}</span>` : ''}
+                                ${data.personal.email ? `
+                                    ${data.personal.location ? '<span class="contact-sep">·</span>' : ''}
+                                    <span class="contact-item"><a href="mailto:${data.personal.email}">${data.personal.email}</a></span>
+                                ` : ''}
+                                ${data.personal.website ? `
+                                    ${(data.personal.location || data.personal.email) ? '<span class="contact-sep">·</span>' : ''}
+                                    <span class="contact-item"><a href="${data.personal.websiteUrl || '#'}">${data.personal.website}</a></span>
+                                ` : ''}
+                            </div>
                         </div>
+                    </header>
 
-                        ${data.skills[1] ? `
-                            <div class="tools-section">
-                                <h3>Tools & Platforms</h3>
-                                <div class="skills-grid">
-                                    ${data.skills[1].items.map(s => `<div class="skill-item">${s}</div>`).join("")}
-                                </div>
-                            </div>
-                        ` : ""}
-
-                        ${data.education && data.education.length > 0 ? `
-                            <div class="education">
-                                <h2>Education</h2>
-                                ${data.education.map(edu => `
-                                    <div class="edu-item">
-                                        <div class="edu-degree">${edu.degree} in ${edu.field}</div>
-                                        <div class="edu-info">${edu.institution}</div>
-                                        ${edu.additional ? `<div class="edu-info">${edu.additional}</div>` : ""}
-                                        <div class="edu-info">${edu.year}</div>
-                                    </div>
-                                `).join("")}
-                            </div>
-                        ` : ""}
-
-                        ${data.honors && data.honors.length > 0 ? `
-                            <div class="honors">
-                                <h2>Honors</h2>
-                                ${data.honors.map(h => `<div class="honor-item">${h.title}</div>`).join("")}
-                            </div>
-                        ` : ""}
-                    </div>
-
-                    <div class="main">
-                        <h1>${data.personal.firstName} ${data.personal.lastName}</h1>
-                        <div class="tagline">${data.personal.title}</div>
-                        ${data.personal.tagline ? `<div class="tagline" style="margin-bottom: 20px;">${data.personal.tagline}</div>` : ""}
-
-                        ${data.profile.text ? `
-                            <h2>Profile</h2>
-                            <div class="profile-text">${data.profile.text}</div>
-                        ` : ""}
-
-                        <h2>Experience</h2>
-                        ${data.experience.map(job => `
-                            <div class="experience">
-                                <div class="exp-header">
-                                    <span class="exp-position">${job.position}</span>
-                                    <span class="exp-date">${job.dateRange}</span>
-                                </div>
-                                <div class="exp-company">${job.company}</div>
-                                <ul class="exp-bullets">
-                                    ${job.bullets.map(b => `<li>${b}</li>`).join("")}
+                    <div class="body">
+                        <aside class="sidebar">
+                            <div class="sidebar-section">
+                                <div class="section-label">Core Skills</div>
+                                <div class="section-rule"></div>
+                                <ul class="skill-list">
+                                    ${data.skills && data.skills[0] ? data.skills[0].items.map(skill => `
+                                        <li>
+                                            <span class="skill-dot"></span>${skill}
+                                        </li>
+                                    `).join('') : ''}
                                 </ul>
                             </div>
-                        `).join("")}
+
+                            ${data.skills && data.skills[1] ? `
+                                <div class="sidebar-section">
+                                    <div class="section-label">Tools</div>
+                                    <div class="section-rule"></div>
+                                    <ul class="skill-list">
+                                        ${data.skills[1].items.map(tool => `<li>${tool}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+
+                            ${data.education && data.education.length > 0 ? `
+                                <div class="sidebar-section">
+                                    <div class="section-label">Education</div>
+                                    <div class="section-rule"></div>
+                                    ${data.education.map(edu => `
+                                        <div class="sidebar-card">
+                                            <div class="sidebar-card-title">${edu.institution}</div>
+                                            <div class="sidebar-card-sub">${edu.degree}${edu.field ? ' · ' + edu.field : ''}</div>
+                                            <div class="sidebar-card-date">${edu.year}</div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+
+                            ${data.honors && data.honors.length > 0 ? `
+                                <div class="sidebar-section">
+                                    <div class="section-label">Honors</div>
+                                    <div class="section-rule"></div>
+                                    ${data.honors.map(honor => `
+                                        <div class="sidebar-card">
+                                            <div class="sidebar-card-title">${honor.title}</div>
+                                            ${honor.organization ? `<div class="sidebar-card-sub">${honor.organization}</div>` : ''}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                        </aside>
+
+                        <main class="main">
+                            ${data.profile && data.profile.text ? `
+                                <div class="main-section">
+                                    <div class="section-label">Profile</div>
+                                    <div class="section-rule"></div>
+                                    <p class="profile-text">${data.profile.text}</p>
+                                    <span class="profile-accent"></span>
+                                </div>
+                            ` : ''}
+
+                            ${data.experience && data.experience.length > 0 ? `
+                                <div class="main-section">
+                                    <div class="section-label">Experience</div>
+                                    <div class="section-rule"></div>
+                                    ${data.experience.map(job => `
+                                        <div class="exp-block">
+                                            <div class="exp-header">
+                                                <div></div>
+                                                <span class="exp-date">${job.dateRange}</span>
+                                            </div>
+                                            <div class="exp-role">${job.position} — ${job.company}</div>
+                                            <ul class="exp-bullets">
+                                                ${job.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
+                                            </ul>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                        </main>
                     </div>
+
+                    <footer>
+                        ${data.personal.email ? `<a href="mailto:${data.personal.email}">${data.personal.email}</a>` : ''}
+                        ${data.personal.email && (data.personal.website || data.personal.phone) ? '<span class="contact-sep">·</span>' : ''}
+                        ${data.personal.website ? `<a href="${data.personal.websiteUrl || '#'}">${data.personal.website}</a>` : ''}
+                        ${(data.personal.website || data.personal.email) && data.personal.phone ? '<span class="contact-sep">·</span>' : ''}
+                        ${data.personal.phone ? `<span>${data.personal.phone}</span>` : ''}
+                    </footer>
                 </div>
                 `;
             }
@@ -1113,7 +1421,14 @@
             // PRINT TO PDF
             // ──────────────────────────────────────────
             function printPDF() {
-                window.print();
+                const html = generateResumeHTML(resumeData);
+                const printWindow = window.open('', '', 'width=900,height=1200');
+                printWindow.document.write(html);
+                printWindow.document.close();
+                setTimeout(() => {
+                    printWindow.focus();
+                    printWindow.print();
+                }, 500);
             }
 
             // ──────────────────────────────────────────
