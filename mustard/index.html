@@ -842,49 +842,165 @@
             }
 
             function generateResumeHTML(data) {
-                // Simplified resume HTML for preview
                 return `
-                <style>
-                    body { font-family: sans-serif; color: #333; margin: 0; }
-                    h2 { color: #1a8fa3; font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
-                    .exp { margin-bottom: 15px; }
-                    .exp-title { font-weight: 600; }
-                    .exp-date { font-size: 12px; color: #666; }
-                    .exp-bullets { margin: 5px 0 0 20px; font-size: 13px; }
-                    .exp-bullets li { margin-bottom: 4px; }
-                    strong { color: #1a8fa3; }
-                </style>
-                <h1 style="font-size: 20px; margin: 0 0 5px 0;">${data.personal.firstName} ${data.personal.lastName}</h1>
-                <div style="font-size: 12px; color: #666; margin-bottom: 15px;">${data.personal.title}</div>
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <style>
+                        * { margin: 0; padding: 0; box-sizing: border-box; }
+                        body {
+                            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                            line-height: 1.6;
+                            color: #0d1f2d;
+                            background: white;
+                        }
+                        .container { display: grid; grid-template-columns: 220px 1fr; gap: 30px; padding: 40px; max-width: 900px; }
+                        .sidebar { border-right: 2px solid #4ecdc4; padding-right: 20px; }
+                        .main { }
 
-                <h2>Profile</h2>
-                <p style="font-size: 13px; line-height: 1.6;">${data.profile.text}</p>
+                        h1 { font-size: 28px; color: #1a8fa3; margin-bottom: 4px; font-weight: 700; }
+                        .tagline { font-size: 12px; color: #4ecdc4; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
 
-                <h2>Experience</h2>
-                ${data.experience
-                    .map(
-                        (job) => `
-                    <div class="exp">
-                        <div class="exp-title">${job.position}</div>
-                        <div class="exp-date">${job.company} • ${job.dateRange}</div>
-                        <ul class="exp-bullets">
-                            ${job.bullets.map((b) => `<li>${b}</li>`).join("")}
-                        </ul>
+                        h2 {
+                            font-size: 12px;
+                            color: #0d1f2d;
+                            text-transform: uppercase;
+                            letter-spacing: 1px;
+                            margin-top: 25px;
+                            margin-bottom: 12px;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                        }
+                        h2::before { content: ''; width: 4px; height: 14px; background: #1a8fa3; border-radius: 2px; }
+
+                        .profile-text {
+                            font-size: 13px;
+                            line-height: 1.7;
+                            margin-bottom: 20px;
+                        }
+                        .profile-text strong { color: #1a8fa3; font-weight: 600; }
+
+                        .skills-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+                        .skill-item {
+                            font-size: 12px;
+                            padding: 6px 0;
+                            color: #333;
+                        }
+
+                        .tools-section h3 { font-size: 11px; color: #666; text-transform: uppercase; margin-top: 15px; margin-bottom: 8px; letter-spacing: 0.5px; }
+
+                        .experience { margin-bottom: 20px; }
+                        .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+                        .exp-position { font-size: 13px; font-weight: 700; color: #0d1f2d; }
+                        .exp-company { font-size: 12px; color: #1a8fa3; }
+                        .exp-date { font-size: 11px; color: #999; }
+                        .exp-bullets { list-style: none; margin: 8px 0 0 0; padding: 0; }
+                        .exp-bullets li { font-size: 12px; color: #333; margin-bottom: 6px; padding-left: 12px; position: relative; line-height: 1.5; }
+                        .exp-bullets li::before { content: '◆'; position: absolute; left: 0; color: #4ecdc4; font-size: 8px; top: 4px; }
+
+                        .education { margin-top: 15px; }
+                        .edu-item { font-size: 12px; margin-bottom: 8px; }
+                        .edu-degree { font-weight: 600; color: #0d1f2d; }
+                        .edu-info { font-size: 11px; color: #666; margin-top: 2px; }
+
+                        .honors { margin-top: 15px; }
+                        .honor-item { font-size: 12px; color: #333; margin-bottom: 8px; }
+
+                        .contact-info { font-size: 11px; color: #666; line-height: 1.8; margin-bottom: 20px; }
+                        .contact-info a { color: #1a8fa3; text-decoration: none; }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <div class="sidebar">
+                            <div class="contact-info">
+                                ${data.personal.location ? `<div>${data.personal.location}</div>` : ""}
+                                ${data.personal.phone ? `<div>${data.personal.phone}</div>` : ""}
+                                ${data.personal.email ? `<div><a href="${data.personal.emailUrl}">${data.personal.email}</a></div>` : ""}
+                                ${data.personal.website ? `<div><a href="${data.personal.websiteUrl}">${data.personal.website}</a></div>` : ""}
+                                ${data.personal.linkedin ? `<div><a href="${data.personal.linkedin}">LinkedIn</a></div>` : ""}
+                            </div>
+
+                            <h2>Skills</h2>
+                            <div class="skills-grid">
+                                ${data.skills[0].items.map(s => `<div class="skill-item">• ${s}</div>`).join("")}
+                            </div>
+
+                            ${data.skills[1] ? `
+                                <div class="tools-section">
+                                    <h3>Tools & Platforms</h3>
+                                    <div class="skills-grid">
+                                        ${data.skills[1].items.map(s => `<div class="skill-item">${s}</div>`).join("")}
+                                    </div>
+                                </div>
+                            ` : ""}
+
+                            ${data.education && data.education.length > 0 ? `
+                                <div class="education">
+                                    <h2>Education</h2>
+                                    ${data.education.map(edu => `
+                                        <div class="edu-item">
+                                            <div class="edu-degree">${edu.degree} in ${edu.field}</div>
+                                            <div class="edu-info">${edu.institution}</div>
+                                            ${edu.additional ? `<div class="edu-info">${edu.additional}</div>` : ""}
+                                            <div class="edu-info">${edu.year}</div>
+                                        </div>
+                                    `).join("")}
+                                </div>
+                            ` : ""}
+
+                            ${data.honors && data.honors.length > 0 ? `
+                                <div class="honors">
+                                    <h2>Honors</h2>
+                                    ${data.honors.map(h => `<div class="honor-item">${h.title}</div>`).join("")}
+                                </div>
+                            ` : ""}
+                        </div>
+
+                        <div class="main">
+                            <h1>${data.personal.firstName} ${data.personal.lastName}</h1>
+                            <div class="tagline">${data.personal.title}</div>
+                            ${data.personal.tagline ? `<div class="tagline" style="margin-bottom: 20px;">${data.personal.tagline}</div>` : ""}
+
+                            ${data.profile.text ? `
+                                <h2>Profile</h2>
+                                <div class="profile-text">${data.profile.text}</div>
+                            ` : ""}
+
+                            <h2>Experience</h2>
+                            ${data.experience.map(job => `
+                                <div class="experience">
+                                    <div class="exp-header">
+                                        <span class="exp-position">${job.position}</span>
+                                        <span class="exp-date">${job.dateRange}</span>
+                                    </div>
+                                    <div class="exp-company">${job.company}</div>
+                                    <ul class="exp-bullets">
+                                        ${job.bullets.map(b => `<li>${b}</li>`).join("")}
+                                    </ul>
+                                </div>
+                            `).join("")}
+                        </div>
                     </div>
-                `,
-                    )
-                    .join("")}
-
-                <h2>Skills</h2>
-                <ul style="font-size: 13px; columns: 2; margin: 0; padding-left: 20px;">
-                    ${data.skills[0].items.map((s) => `<li>${s}</li>`).join("")}
-                </ul>
-            `;
+                </body>
+                </html>
+                `;
             }
 
             // ──────────────────────────────────────────
             // GITHUB OPERATIONS
             // ──────────────────────────────────────────
+            function utf8ToBase64(str) {
+                // Convert UTF-8 string to base64 safely (handles emoji)
+                const utf8Bytes = new TextEncoder().encode(str);
+                let binary = '';
+                for (let i = 0; i < utf8Bytes.length; i++) {
+                    binary += String.fromCharCode(utf8Bytes[i]);
+                }
+                return btoa(binary);
+            }
+
             function saveGithubToken() {
                 const token = document
                     .getElementById("githubToken")
@@ -969,7 +1085,7 @@
                     const commitUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filename}`;
                     const commitData = {
                         message: `Update resume variant: ${variantName}`,
-                        content: btoa(fileContent), // base64 encode
+                        content: utf8ToBase64(fileContent), // base64 encode with UTF-8 support
                         branch: GITHUB_BRANCH,
                     };
 
