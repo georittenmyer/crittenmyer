@@ -680,9 +680,12 @@
             async function loadResume() {
                 try {
                     const url = `https://raw.githubusercontent.com/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_FILE_PATH}`;
+                    console.log("Fetching:", url);
                     const response = await fetch(url);
+                    console.log("Response status:", response.status);
                     if (!response.ok) throw new Error("Failed to load");
                     resumeData = await response.json();
+                    console.log("Data loaded, rendering...");
                     renderEditor();
                     updatePreview();
                     showStatus("Resume loaded successfully", "success");
@@ -693,6 +696,7 @@
                             "block";
                     }
                 } catch (error) {
+                    console.error("LoadResume error:", error);
                     showStatus(
                         "Error loading resume: " + error.message,
                         "error",
