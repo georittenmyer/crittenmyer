@@ -1,664 +1,747 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Customizer — Chelsea Rittenmyer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Resume Customizer — Chelsea Rittenmyer</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: #f5f5f5;
-            color: #333;
-        }
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    sans-serif;
+                background: #f5f5f5;
+                color: #333;
+            }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+            .container {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 20px;
+            }
 
-        /* ── LOGIN SCREEN ── */
-        .login-screen {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #1a8fa3 0%, #4ecdc4 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
+            /* ── LOGIN SCREEN ── */
+            .login-screen {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(135deg, #1a8fa3 0%, #4ecdc4 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+            }
 
-        .login-screen.active {
-            display: flex;
-        }
+            .login-screen.active {
+                display: flex;
+            }
 
-        .login-box {
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
+            .login-box {
+                background: white;
+                padding: 40px;
+                border-radius: 8px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+                width: 100%;
+                max-width: 400px;
+                text-align: center;
+            }
 
-        .login-box h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #0d1f2d;
-        }
+            .login-box h1 {
+                font-size: 24px;
+                margin-bottom: 10px;
+                color: #0d1f2d;
+            }
 
-        .login-box p {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
+            .login-box p {
+                color: #666;
+                margin-bottom: 30px;
+                font-size: 14px;
+            }
 
-        .login-box input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
+            .login-box input {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
 
-        .login-box button {
-            width: 100%;
-            padding: 12px;
-            background: #1a8fa3;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
+            .login-box button {
+                width: 100%;
+                padding: 12px;
+                background: #1a8fa3;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
 
-        .login-box button:hover {
-            background: #157a8a;
-        }
+            .login-box button:hover {
+                background: #157a8a;
+            }
 
-        .login-error {
-            color: #d32f2f;
-            margin-bottom: 15px;
-            font-size: 14px;
-            display: none;
-        }
+            .login-error {
+                color: #d32f2f;
+                margin-bottom: 15px;
+                font-size: 14px;
+                display: none;
+            }
 
-        /* ── HEADER ── */
-        header {
-            background: white;
-            padding: 20px;
-            border-bottom: 2px solid #1a8fa3;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 4px;
-        }
+            /* ── HEADER ── */
+            header {
+                background: white;
+                padding: 20px;
+                border-bottom: 2px solid #1a8fa3;
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: 4px;
+            }
 
-        header h1 {
-            font-size: 22px;
-            color: #0d1f2d;
-        }
+            header h1 {
+                font-size: 22px;
+                color: #0d1f2d;
+            }
 
-        header .subtitle {
-            font-size: 12px;
-            color: #666;
-            margin-top: 4px;
-        }
+            header .subtitle {
+                font-size: 12px;
+                color: #666;
+                margin-top: 4px;
+            }
 
-        .header-actions {
-            display: flex;
-            gap: 10px;
-        }
+            .header-actions {
+                display: flex;
+                gap: 10px;
+            }
 
-        button {
-            padding: 10px 16px;
-            border: none;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
+            button {
+                padding: 10px 16px;
+                border: none;
+                border-radius: 4px;
+                font-weight: 600;
+                cursor: pointer;
+                font-size: 14px;
+                transition: all 0.3s;
+            }
 
-        .btn-primary {
-            background: #1a8fa3;
-            color: white;
-        }
+            .btn-primary {
+                background: #1a8fa3;
+                color: white;
+            }
 
-        .btn-primary:hover {
-            background: #157a8a;
-        }
+            .btn-primary:hover {
+                background: #157a8a;
+            }
 
-        .btn-secondary {
-            background: #e0e0e0;
-            color: #333;
-        }
+            .btn-secondary {
+                background: #e0e0e0;
+                color: #333;
+            }
 
-        .btn-secondary:hover {
-            background: #d0d0d0;
-        }
+            .btn-secondary:hover {
+                background: #d0d0d0;
+            }
 
-        .btn-success {
-            background: #4caf50;
-            color: white;
-        }
+            .btn-success {
+                background: #4caf50;
+                color: white;
+            }
 
-        .btn-success:hover {
-            background: #45a049;
-        }
+            .btn-success:hover {
+                background: #45a049;
+            }
 
-        /* ── LAYOUT ── */
-        .layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        @media (max-width: 1000px) {
+            /* ── LAYOUT ── */
             .layout {
-                grid-template-columns: 1fr;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
             }
-        }
 
-        /* ── EDITOR PANEL ── */
-        .editor-panel {
-            background: white;
-            padding: 20px;
-            border-radius: 4px;
-        }
-
-        .section {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .section:last-child {
-            border-bottom: none;
-        }
-
-        .section-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #0d1f2d;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .section-title::before {
-            content: '';
-            width: 4px;
-            height: 16px;
-            background: #1a8fa3;
-            border-radius: 2px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            font-weight: 600;
-            font-size: 13px;
-            color: #333;
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="url"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 14px;
-            transition: border-color 0.3s;
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="url"]:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #1a8fa3;
-            box-shadow: 0 0 0 3px rgba(26, 143, 163, 0.1);
-        }
-
-        textarea {
-            min-height: 80px;
-            resize: vertical;
-        }
-
-        .add-btn {
-            background: #4ecdc4;
-            color: white;
-            padding: 8px 12px;
-            font-size: 12px;
-            margin-top: 10px;
-        }
-
-        .add-btn:hover {
-            background: #3ab9b0;
-        }
-
-        .list-item {
-            background: #f9f9f9;
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .list-item input {
-            flex: 1;
-            margin: 0;
-        }
-
-        .remove-btn {
-            background: #f44336;
-            color: white;
-            padding: 6px 10px;
-            font-size: 12px;
-            flex-shrink: 0;
-        }
-
-        .remove-btn:hover {
-            background: #d32f2f;
-        }
-
-        /* ── PREVIEW PANEL ── */
-        .preview-panel {
-            background: white;
-            border-radius: 4px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            max-height: 90vh;
-            position: sticky;
-            top: 20px;
-        }
-
-        .preview-header {
-            background: #0d1f2d;
-            color: white;
-            padding: 15px 20px;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .preview-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .preview-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* ── SAVE MODAL ── */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            max-width: 400px;
-            width: 90%;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-content h2 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: #0d1f2d;
-        }
-
-        .modal-content p {
-            color: #666;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-
-        .modal-input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        .modal-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-        }
-
-        .modal-actions button {
-            padding: 10px 16px;
-        }
-
-        .github-setup {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .github-setup strong {
-            display: block;
-            margin-bottom: 8px;
-            color: #856404;
-        }
-
-        .github-setup code {
-            background: #fff;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: monospace;
-            font-size: 12px;
-        }
-
-        .status-message {
-            padding: 12px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            display: none;
-            font-size: 13px;
-        }
-
-        .status-message.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            display: block;
-        }
-
-        .status-message.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-            display: block;
-        }
-
-        .status-message.info {
-            background: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
-            display: block;
-        }
-
-        .loading {
-            display: inline-block;
-            width: 14px;
-            height: 14px;
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid #1a8fa3;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
-</head>
-<body>
-    <!-- Login Screen -->
-    <div id="loginScreen" class="login-screen active">
-        <div class="login-box">
-            <h1>🔐 Resume Customizer</h1>
-            <p>Enter password to customize</p>
-            <div class="login-error" id="loginError"></div>
-            <input type="password" id="passwordInput" placeholder="Password" onkeypress="if(event.key==='Enter') login()">
-            <button onclick="login()">Unlock</button>
-        </div>
-    </div>
-
-    <!-- Main App -->
-    <div id="app" style="display: none;">
-        <div class="container">
-            <header>
-                <div>
-                    <h1>Resume Customizer</h1>
-                    <div class="subtitle">Customize for specific opportunities</div>
-                </div>
-                <div class="header-actions">
-                    <button class="btn-secondary" onclick="printPDF()">🖨️ Print PDF</button>
-                    <button class="btn-success" onclick="openSaveModal()">💾 Save Variant</button>
-                    <button class="btn-secondary" onclick="logout()">Logout</button>
-                </div>
-            </header>
-
-            <div id="statusMessage" class="status-message"></div>
-
-            <div class="layout">
-                <!-- Editor Panel -->
-                <div class="editor-panel">
-                    <div class="github-setup" id="githubSetup" style="display: none;">
-                        <strong>⚙️ GitHub Setup Required</strong>
-                        First time? Create a GitHub Personal Access Token:
-                        <ol style="margin-left: 20px; margin-top: 8px;">
-                            <li>Go to github.com/settings/tokens</li>
-                            <li>Click "Generate new token"</li>
-                            <li>Check "repo" scope</li>
-                            <li>Copy token and paste it below</li>
-                        </ol>
-                        <input type="password" id="githubToken" placeholder="Paste your GitHub token" style="margin-top: 10px; font-size: 12px;">
-                        <button class="btn-primary" onclick="saveGithubToken()" style="margin-top: 8px; width: 100%;">Save Token</button>
-                    </div>
-
-                    <!-- Personal Section -->
-                    <div class="section">
-                        <div class="section-title">Personal Info</div>
-                        <div class="form-group">
-                            <label>Title (for this application)</label>
-                            <input type="text" id="title" placeholder="Creative Director · Content Strategy & Multimedia Production">
-                        </div>
-                        <div class="form-group">
-                            <label>Tagline</label>
-                            <input type="text" id="tagline" placeholder="Multimedia Production & Creative Direction...">
-                        </div>
-                    </div>
-
-                    <!-- Profile Section -->
-                    <div class="section">
-                        <div class="section-title">Profile Summary</div>
-                        <div class="form-group">
-                            <label>Your professional summary</label>
-                            <textarea id="profileText" placeholder="Strategic and innovative content leader..."></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Skills Section -->
-                    <div class="section">
-                        <div class="section-title">Core Skills</div>
-                        <div id="skillsList"></div>
-                        <button class="add-btn" onclick="addSkill()">+ Add Skill</button>
-                    </div>
-
-                    <!-- Experience Section -->
-                    <div class="section">
-                        <div class="section-title">Experience</div>
-                        <div id="experienceList"></div>
-                        <button class="add-btn" onclick="addExperience()">+ Add Position</button>
-                    </div>
-                </div>
-
-                <!-- Preview Panel -->
-                <div class="preview-panel">
-                    <div class="preview-header">
-                        📄 Live Preview
-                    </div>
-                    <div class="preview-content" id="previewContent">
-                        <p style="color: #999; text-align: center; margin-top: 40px;">Loading preview...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Save Modal -->
-    <div id="saveModal" class="modal">
-        <div class="modal-content">
-            <h2>Save Variant</h2>
-            <p>Give this customized version a name for the company or opportunity:</p>
-            <input type="text" id="variantName" class="modal-input" placeholder="e.g., apple, google, startup-xyz">
-            <p style="font-size: 12px; color: #999;">Will save as: <code>resume-<span id="previewName">company</span>.json</code></p>
-            <div class="modal-actions">
-                <button class="btn-secondary" onclick="closeSaveModal()">Cancel</button>
-                <button class="btn-success" onclick="saveVariant()">Save to GitHub</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // CONFIG
-        const PASSWORD = 'mustard'; // Change this to a strong password!
-        const GITHUB_REPO = 'georittenmyer/Chelsea'; // owner/repo
-        const GITHUB_BRANCH = 'main';
-        const GITHUB_FILE_PATH = 'resume-data.json';
-
-        // STATE
-        let resumeData = null;
-        let isDirty = false;
-
-        // ──────────────────────────────────────────
-        // LOGIN
-        // ──────────────────────────────────────────
-        function login() {
-            const password = document.getElementById('passwordInput').value;
-            if (password === PASSWORD) {
-                document.getElementById('loginScreen').classList.remove('active');
-                document.getElementById('app').style.display = 'block';
-                loadResume();
-            } else {
-                document.getElementById('loginError').textContent = 'Incorrect password';
-                document.getElementById('loginError').style.display = 'block';
-                document.getElementById('passwordInput').value = '';
-            }
-        }
-
-        function logout() {
-            document.getElementById('loginScreen').classList.add('active');
-            document.getElementById('app').style.display = 'none';
-            document.getElementById('passwordInput').value = '';
-        }
-
-        // ──────────────────────────────────────────
-        // LOAD RESUME FROM GITHUB
-        // ──────────────────────────────────────────
-        async function loadResume() {
-            try {
-                const url = `https://raw.githubusercontent.com/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_FILE_PATH}`;
-                const response = await fetch(url);
-                if (!response.ok) throw new Error('Failed to load');
-                resumeData = await response.json();
-                renderEditor();
-                updatePreview();
-                showStatus('Resume loaded successfully', 'success');
-
-                // Check if GitHub token is set
-                if (!localStorage.getItem('githubToken')) {
-                    document.getElementById('githubSetup').style.display = 'block';
+            @media (max-width: 1000px) {
+                .layout {
+                    grid-template-columns: 1fr;
                 }
-            } catch (error) {
-                showStatus('Error loading resume: ' + error.message, 'error');
             }
-        }
 
-        // ──────────────────────────────────────────
-        // RENDER EDITOR
-        // ──────────────────────────────────────────
-        function renderEditor() {
-            if (!resumeData) return;
+            /* ── EDITOR PANEL ── */
+            .editor-panel {
+                background: white;
+                padding: 20px;
+                border-radius: 4px;
+            }
 
-            // Title & Tagline
-            document.getElementById('title').value = resumeData.personal.title || '';
-            document.getElementById('tagline').value = resumeData.personal.tagline || '';
-            document.getElementById('profileText').value = resumeData.profile.text || '';
+            .section {
+                margin-bottom: 30px;
+                padding-bottom: 20px;
+                border-bottom: 1px solid #eee;
+            }
 
-            // Skills
-            const skillsContainer = document.getElementById('skillsList');
-            skillsContainer.innerHTML = '';
-            resumeData.skills[0].items.forEach((skill, idx) => {
-                skillsContainer.appendChild(createSkillItem(skill, idx));
-            });
+            .section:last-child {
+                border-bottom: none;
+            }
 
-            // Experience
-            const expContainer = document.getElementById('experienceList');
-            expContainer.innerHTML = '';
-            resumeData.experience.forEach((job, idx) => {
-                expContainer.appendChild(createExperienceItem(job, idx));
-            });
-        }
+            .section-title {
+                font-size: 16px;
+                font-weight: 700;
+                color: #0d1f2d;
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
 
-        function createSkillItem(skill, idx) {
-            const div = document.createElement('div');
-            div.className = 'list-item';
-            div.innerHTML = `
+            .section-title::before {
+                content: "";
+                width: 4px;
+                height: 16px;
+                background: #1a8fa3;
+                border-radius: 2px;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            label {
+                display: block;
+                font-weight: 600;
+                font-size: 13px;
+                color: #333;
+                margin-bottom: 6px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="url"],
+            textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-family: inherit;
+                font-size: 14px;
+                transition: border-color 0.3s;
+            }
+
+            input[type="text"]:focus,
+            input[type="email"]:focus,
+            input[type="url"]:focus,
+            textarea:focus {
+                outline: none;
+                border-color: #1a8fa3;
+                box-shadow: 0 0 0 3px rgba(26, 143, 163, 0.1);
+            }
+
+            textarea {
+                min-height: 80px;
+                resize: vertical;
+            }
+
+            .add-btn {
+                background: #4ecdc4;
+                color: white;
+                padding: 8px 12px;
+                font-size: 12px;
+                margin-top: 10px;
+            }
+
+            .add-btn:hover {
+                background: #3ab9b0;
+            }
+
+            .list-item {
+                background: #f9f9f9;
+                padding: 10px;
+                border-radius: 4px;
+                margin-bottom: 8px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .list-item input {
+                flex: 1;
+                margin: 0;
+            }
+
+            .remove-btn {
+                background: #f44336;
+                color: white;
+                padding: 6px 10px;
+                font-size: 12px;
+                flex-shrink: 0;
+            }
+
+            .remove-btn:hover {
+                background: #d32f2f;
+            }
+
+            /* ── PREVIEW PANEL ── */
+            .preview-panel {
+                background: white;
+                border-radius: 4px;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                max-height: 90vh;
+                position: sticky;
+                top: 20px;
+            }
+
+            .preview-header {
+                background: #0d1f2d;
+                color: white;
+                padding: 15px 20px;
+                font-weight: 600;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .preview-content {
+                flex: 1;
+                overflow-y: auto;
+                padding: 20px;
+            }
+
+            .preview-iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+
+            /* ── SAVE MODAL ── */
+            .modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .modal.active {
+                display: flex;
+            }
+
+            .modal-content {
+                background: white;
+                padding: 30px;
+                border-radius: 8px;
+                max-width: 400px;
+                width: 90%;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            }
+
+            .modal-content h2 {
+                font-size: 20px;
+                margin-bottom: 20px;
+                color: #0d1f2d;
+            }
+
+            .modal-content p {
+                color: #666;
+                margin-bottom: 15px;
+                font-size: 14px;
+            }
+
+            .modal-input {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .modal-actions {
+                display: flex;
+                gap: 10px;
+                justify-content: flex-end;
+            }
+
+            .modal-actions button {
+                padding: 10px 16px;
+            }
+
+            .github-setup {
+                background: #fff3cd;
+                border-left: 4px solid #ffc107;
+                padding: 15px;
+                border-radius: 4px;
+                margin-bottom: 20px;
+                font-size: 13px;
+                line-height: 1.6;
+            }
+
+            .github-setup strong {
+                display: block;
+                margin-bottom: 8px;
+                color: #856404;
+            }
+
+            .github-setup code {
+                background: #fff;
+                padding: 2px 6px;
+                border-radius: 3px;
+                font-family: monospace;
+                font-size: 12px;
+            }
+
+            .status-message {
+                padding: 12px;
+                border-radius: 4px;
+                margin-bottom: 15px;
+                display: none;
+                font-size: 13px;
+            }
+
+            .status-message.success {
+                background: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+                display: block;
+            }
+
+            .status-message.error {
+                background: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+                display: block;
+            }
+
+            .status-message.info {
+                background: #d1ecf1;
+                color: #0c5460;
+                border: 1px solid #bee5eb;
+                display: block;
+            }
+
+            .loading {
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                border: 2px solid #f3f3f3;
+                border-top: 2px solid #1a8fa3;
+                border-radius: 50%;
+                animation: spin 0.8s linear infinite;
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Login Screen -->
+        <div id="loginScreen" class="login-screen active">
+            <div class="login-box">
+                <h1>🔐 Resume Customizer</h1>
+                <p>Enter password to customize</p>
+                <div class="login-error" id="loginError"></div>
+                <input
+                    type="password"
+                    id="passwordInput"
+                    placeholder="Password"
+                    onkeypress="if (event.key === 'Enter') login();"
+                />
+                <button onclick="login()">Unlock</button>
+            </div>
+        </div>
+
+        <!-- Main App -->
+        <div id="app" style="display: none">
+            <div class="container">
+                <header>
+                    <div>
+                        <h1>Resume Customizer</h1>
+                        <div class="subtitle">
+                            Customize for specific opportunities
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-secondary" onclick="printPDF()">
+                            🖨️ Print PDF
+                        </button>
+                        <button class="btn-success" onclick="openSaveModal()">
+                            💾 Save Variant
+                        </button>
+                        <button class="btn-secondary" onclick="logout()">
+                            Logout
+                        </button>
+                    </div>
+                </header>
+
+                <div id="statusMessage" class="status-message"></div>
+
+                <div class="layout">
+                    <!-- Editor Panel -->
+                    <div class="editor-panel">
+                        <div
+                            class="github-setup"
+                            id="githubSetup"
+                            style="display: none"
+                        >
+                            <strong>⚙️ GitHub Setup Required</strong>
+                            First time? Create a GitHub Personal Access Token:
+                            <ol style="margin-left: 20px; margin-top: 8px">
+                                <li>Go to github.com/settings/tokens</li>
+                                <li>Click "Generate new token"</li>
+                                <li>Check "repo" scope</li>
+                                <li>Copy token and paste it below</li>
+                            </ol>
+                            <input
+                                type="password"
+                                id="githubToken"
+                                placeholder="Paste your GitHub token"
+                                style="margin-top: 10px; font-size: 12px"
+                            />
+                            <button
+                                class="btn-primary"
+                                onclick="saveGithubToken()"
+                                style="margin-top: 8px; width: 100%"
+                            >
+                                Save Token
+                            </button>
+                        </div>
+
+                        <!-- Personal Section -->
+                        <div class="section">
+                            <div class="section-title">Personal Info</div>
+                            <div class="form-group">
+                                <label>Title (for this application)</label>
+                                <input
+                                    type="text"
+                                    id="title"
+                                    placeholder="Creative Director · Content Strategy & Multimedia Production"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label>Tagline</label>
+                                <input
+                                    type="text"
+                                    id="tagline"
+                                    placeholder="Multimedia Production & Creative Direction..."
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Profile Section -->
+                        <div class="section">
+                            <div class="section-title">Profile Summary</div>
+                            <div class="form-group">
+                                <label>Your professional summary</label>
+                                <textarea
+                                    id="profileText"
+                                    placeholder="Strategic and innovative content leader..."
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Skills Section -->
+                        <div class="section">
+                            <div class="section-title">Core Skills</div>
+                            <div id="skillsList"></div>
+                            <button class="add-btn" onclick="addSkill()">
+                                + Add Skill
+                            </button>
+                        </div>
+
+                        <!-- Experience Section -->
+                        <div class="section">
+                            <div class="section-title">Experience</div>
+                            <div id="experienceList"></div>
+                            <button class="add-btn" onclick="addExperience()">
+                                + Add Position
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Preview Panel -->
+                    <div class="preview-panel">
+                        <div class="preview-header">📄 Live Preview</div>
+                        <div class="preview-content" id="previewContent">
+                            <p
+                                style="
+                                    color: #999;
+                                    text-align: center;
+                                    margin-top: 40px;
+                                "
+                            >
+                                Loading preview...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Save Modal -->
+        <div id="saveModal" class="modal">
+            <div class="modal-content">
+                <h2>Save Variant</h2>
+                <p>
+                    Give this customized version a name for the company or
+                    opportunity:
+                </p>
+                <input
+                    type="text"
+                    id="variantName"
+                    class="modal-input"
+                    placeholder="e.g., apple, google, startup-xyz"
+                />
+                <p style="font-size: 12px; color: #999">
+                    Will save as:
+                    <code
+                        >resume-<span id="previewName">company</span>.json</code
+                    >
+                </p>
+                <div class="modal-actions">
+                    <button class="btn-secondary" onclick="closeSaveModal()">
+                        Cancel
+                    </button>
+                    <button class="btn-success" onclick="saveVariant()">
+                        Save to GitHub
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // CONFIG
+            const PASSWORD = "hotdog"; // Change this to a strong password!
+            const GITHUB_REPO = "georittenmyer/Chelsea"; // owner/repo
+            const GITHUB_BRANCH = "main";
+            const GITHUB_FILE_PATH = "resume-data.json";
+
+            // STATE
+            let resumeData = null;
+            let isDirty = false;
+
+            // ──────────────────────────────────────────
+            // LOGIN
+            // ──────────────────────────────────────────
+            function login() {
+                const password = document.getElementById("passwordInput").value;
+                if (password === PASSWORD) {
+                    document
+                        .getElementById("loginScreen")
+                        .classList.remove("active");
+                    document.getElementById("app").style.display = "block";
+                    loadResume();
+                } else {
+                    document.getElementById("loginError").textContent =
+                        "Incorrect password";
+                    document.getElementById("loginError").style.display =
+                        "block";
+                    document.getElementById("passwordInput").value = "";
+                }
+            }
+
+            function logout() {
+                document.getElementById("loginScreen").classList.add("active");
+                document.getElementById("app").style.display = "none";
+                document.getElementById("passwordInput").value = "";
+            }
+
+            // ──────────────────────────────────────────
+            // LOAD RESUME FROM GITHUB
+            // ──────────────────────────────────────────
+            async function loadResume() {
+                try {
+                    const url = `https://raw.githubusercontent.com/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_FILE_PATH}`;
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error("Failed to load");
+                    resumeData = await response.json();
+                    renderEditor();
+                    updatePreview();
+                    showStatus("Resume loaded successfully", "success");
+
+                    // Check if GitHub token is set
+                    if (!localStorage.getItem("githubToken")) {
+                        document.getElementById("githubSetup").style.display =
+                            "block";
+                    }
+                } catch (error) {
+                    showStatus(
+                        "Error loading resume: " + error.message,
+                        "error",
+                    );
+                }
+            }
+
+            // ──────────────────────────────────────────
+            // RENDER EDITOR
+            // ──────────────────────────────────────────
+            function renderEditor() {
+                if (!resumeData) return;
+
+                // Title & Tagline
+                document.getElementById("title").value =
+                    resumeData.personal.title || "";
+                document.getElementById("tagline").value =
+                    resumeData.personal.tagline || "";
+                document.getElementById("profileText").value =
+                    resumeData.profile.text || "";
+
+                // Skills
+                const skillsContainer = document.getElementById("skillsList");
+                skillsContainer.innerHTML = "";
+                resumeData.skills[0].items.forEach((skill, idx) => {
+                    skillsContainer.appendChild(createSkillItem(skill, idx));
+                });
+
+                // Experience
+                const expContainer = document.getElementById("experienceList");
+                expContainer.innerHTML = "";
+                resumeData.experience.forEach((job, idx) => {
+                    expContainer.appendChild(createExperienceItem(job, idx));
+                });
+            }
+
+            function createSkillItem(skill, idx) {
+                const div = document.createElement("div");
+                div.className = "list-item";
+                div.innerHTML = `
                 <input type="text" value="${skill}" onchange="updateSkill(${idx}, this.value)">
                 <button class="remove-btn" onclick="removeSkill(${idx})">Remove</button>
             `;
-            return div;
-        }
+                return div;
+            }
 
-        function createExperienceItem(job, idx) {
-            const div = document.createElement('div');
-            div.style.background = '#f9f9f9';
-            div.style.padding = '15px';
-            div.style.borderRadius = '4px';
-            div.style.marginBottom = '15px';
-            div.innerHTML = `
+            function createExperienceItem(job, idx) {
+                const div = document.createElement("div");
+                div.style.background = "#f9f9f9";
+                div.style.padding = "15px";
+                div.style.borderRadius = "4px";
+                div.style.marginBottom = "15px";
+                div.innerHTML = `
                 <div class="form-group">
                     <label>Company</label>
                     <input type="text" value="${job.company}" onchange="updateExp(${idx}, 'company', this.value)">
@@ -673,79 +756,84 @@
                 </div>
                 <div class="form-group">
                     <label>Bullets (one per line)</label>
-                    <textarea onchange="updateExp(${idx}, 'bullets', this.value)">${job.bullets.join('\n')}</textarea>
+                    <textarea onchange="updateExp(${idx}, 'bullets', this.value)">${job.bullets.join("\n")}</textarea>
                 </div>
                 <button class="remove-btn" onclick="removeExp(${idx})" style="width: 100%;">Remove Position</button>
             `;
-            return div;
-        }
-
-        function updateSkill(idx, value) {
-            resumeData.skills[0].items[idx] = value;
-            isDirty = true;
-            updatePreview();
-        }
-
-        function removeSkill(idx) {
-            resumeData.skills[0].items.splice(idx, 1);
-            isDirty = true;
-            renderEditor();
-            updatePreview();
-        }
-
-        function addSkill() {
-            resumeData.skills[0].items.push('New Skill');
-            isDirty = true;
-            renderEditor();
-            updatePreview();
-        }
-
-        function updateExp(idx, field, value) {
-            if (field === 'bullets') {
-                resumeData.experience[idx].bullets = value.split('\n').filter(b => b.trim());
-            } else {
-                resumeData.experience[idx][field] = value;
+                return div;
             }
-            isDirty = true;
-            updatePreview();
-        }
 
-        function removeExp(idx) {
-            resumeData.experience.splice(idx, 1);
-            isDirty = true;
-            renderEditor();
-            updatePreview();
-        }
+            function updateSkill(idx, value) {
+                resumeData.skills[0].items[idx] = value;
+                isDirty = true;
+                updatePreview();
+            }
 
-        function addExperience() {
-            resumeData.experience.push({
-                company: 'New Company',
-                position: 'New Position',
-                dateRange: '2024',
-                bullets: ['Achievement 1', 'Achievement 2']
-            });
-            isDirty = true;
-            renderEditor();
-            updatePreview();
-        }
+            function removeSkill(idx) {
+                resumeData.skills[0].items.splice(idx, 1);
+                isDirty = true;
+                renderEditor();
+                updatePreview();
+            }
 
-        // ──────────────────────────────────────────
-        // UPDATE PREVIEW
-        // ──────────────────────────────────────────
-        function updatePreview() {
-            // Update title & tagline in resume data
-            resumeData.personal.title = document.getElementById('title').value;
-            resumeData.personal.tagline = document.getElementById('tagline').value;
-            resumeData.profile.text = document.getElementById('profileText').value;
+            function addSkill() {
+                resumeData.skills[0].items.push("New Skill");
+                isDirty = true;
+                renderEditor();
+                updatePreview();
+            }
 
-            // Generate preview HTML
-            const html = generateResumeHTML(resumeData);
-            document.getElementById('previewContent').innerHTML = html;
-        }
+            function updateExp(idx, field, value) {
+                if (field === "bullets") {
+                    resumeData.experience[idx].bullets = value
+                        .split("\n")
+                        .filter((b) => b.trim());
+                } else {
+                    resumeData.experience[idx][field] = value;
+                }
+                isDirty = true;
+                updatePreview();
+            }
 
-        function generateResumeHTML(data) {
-            // Simplified resume HTML for preview
-            return `
+            function removeExp(idx) {
+                resumeData.experience.splice(idx, 1);
+                isDirty = true;
+                renderEditor();
+                updatePreview();
+            }
+
+            function addExperience() {
+                resumeData.experience.push({
+                    company: "New Company",
+                    position: "New Position",
+                    dateRange: "2024",
+                    bullets: ["Achievement 1", "Achievement 2"],
+                });
+                isDirty = true;
+                renderEditor();
+                updatePreview();
+            }
+
+            // ──────────────────────────────────────────
+            // UPDATE PREVIEW
+            // ──────────────────────────────────────────
+            function updatePreview() {
+                // Update title & tagline in resume data
+                resumeData.personal.title =
+                    document.getElementById("title").value;
+                resumeData.personal.tagline =
+                    document.getElementById("tagline").value;
+                resumeData.profile.text =
+                    document.getElementById("profileText").value;
+
+                // Generate preview HTML
+                const html = generateResumeHTML(resumeData);
+                document.getElementById("previewContent").innerHTML = html;
+            }
+
+            function generateResumeHTML(data) {
+                // Simplified resume HTML for preview
+                return `
                 <style>
                     body { font-family: sans-serif; color: #333; margin: 0; }
                     h2 { color: #1a8fa3; font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
@@ -763,151 +851,171 @@
                 <p style="font-size: 13px; line-height: 1.6;">${data.profile.text}</p>
 
                 <h2>Experience</h2>
-                ${data.experience.map(job => `
+                ${data.experience
+                    .map(
+                        (job) => `
                     <div class="exp">
                         <div class="exp-title">${job.position}</div>
                         <div class="exp-date">${job.company} • ${job.dateRange}</div>
                         <ul class="exp-bullets">
-                            ${job.bullets.map(b => `<li>${b}</li>`).join('')}
+                            ${job.bullets.map((b) => `<li>${b}</li>`).join("")}
                         </ul>
                     </div>
-                `).join('')}
+                `,
+                    )
+                    .join("")}
 
                 <h2>Skills</h2>
                 <ul style="font-size: 13px; columns: 2; margin: 0; padding-left: 20px;">
-                    ${data.skills[0].items.map(s => `<li>${s}</li>`).join('')}
+                    ${data.skills[0].items.map((s) => `<li>${s}</li>`).join("")}
                 </ul>
             `;
-        }
-
-        // ──────────────────────────────────────────
-        // GITHUB OPERATIONS
-        // ──────────────────────────────────────────
-        function saveGithubToken() {
-            const token = document.getElementById('githubToken').value.trim();
-            if (!token) {
-                showStatus('Token cannot be empty', 'error');
-                return;
-            }
-            localStorage.setItem('githubToken', token);
-            document.getElementById('githubSetup').style.display = 'none';
-            showStatus('GitHub token saved securely', 'success');
-        }
-
-        function openSaveModal() {
-            document.getElementById('variantName').value = '';
-            document.getElementById('saveModal').classList.add('active');
-        }
-
-        function closeSaveModal() {
-            document.getElementById('saveModal').classList.remove('active');
-        }
-
-        function updateVariantNamePreview() {
-            const name = document.getElementById('variantName').value || 'company';
-            document.getElementById('previewName').textContent = name;
-        }
-
-        document.getElementById('variantName').addEventListener('input', updateVariantNamePreview);
-
-        async function saveVariant() {
-            const variantName = document.getElementById('variantName').value.trim();
-            if (!variantName) {
-                showStatus('Please enter a variant name', 'error');
-                return;
             }
 
-            const token = localStorage.getItem('githubToken');
-            if (!token) {
-                showStatus('GitHub token not set. Please configure it first.', 'error');
-                return;
+            // ──────────────────────────────────────────
+            // GITHUB OPERATIONS
+            // ──────────────────────────────────────────
+            function saveGithubToken() {
+                const token = document
+                    .getElementById("githubToken")
+                    .value.trim();
+                if (!token) {
+                    showStatus("Token cannot be empty", "error");
+                    return;
+                }
+                localStorage.setItem("githubToken", token);
+                document.getElementById("githubSetup").style.display = "none";
+                showStatus("GitHub token saved securely", "success");
             }
 
-            // Update current data from form
-            resumeData.personal.title = document.getElementById('title').value;
-            resumeData.personal.tagline = document.getElementById('tagline').value;
-            resumeData.profile.text = document.getElementById('profileText').value;
+            function openSaveModal() {
+                document.getElementById("variantName").value = "";
+                document.getElementById("saveModal").classList.add("active");
+            }
 
-            const filename = `resume-${variantName}.json`;
-            const fileContent = JSON.stringify(resumeData, null, 2);
+            function closeSaveModal() {
+                document.getElementById("saveModal").classList.remove("active");
+            }
 
-            try {
-                showStatus('Saving to GitHub...', 'info');
+            function updateVariantNamePreview() {
+                const name =
+                    document.getElementById("variantName").value || "company";
+                document.getElementById("previewName").textContent = name;
+            }
 
-                // Get current file SHA for update
-                const getShaUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filename}?ref=${GITHUB_BRANCH}`;
-                let sha = null;
+            document
+                .getElementById("variantName")
+                .addEventListener("input", updateVariantNamePreview);
+
+            async function saveVariant() {
+                const variantName = document
+                    .getElementById("variantName")
+                    .value.trim();
+                if (!variantName) {
+                    showStatus("Please enter a variant name", "error");
+                    return;
+                }
+
+                const token = localStorage.getItem("githubToken");
+                if (!token) {
+                    showStatus(
+                        "GitHub token not set. Please configure it first.",
+                        "error",
+                    );
+                    return;
+                }
+
+                // Update current data from form
+                resumeData.personal.title =
+                    document.getElementById("title").value;
+                resumeData.personal.tagline =
+                    document.getElementById("tagline").value;
+                resumeData.profile.text =
+                    document.getElementById("profileText").value;
+
+                const filename = `resume-${variantName}.json`;
+                const fileContent = JSON.stringify(resumeData, null, 2);
 
                 try {
-                    const shaResponse = await fetch(getShaUrl, {
-                        headers: { 'Authorization': `token ${token}` }
-                    });
-                    if (shaResponse.ok) {
-                        const shaData = await shaResponse.json();
-                        sha = shaData.sha;
+                    showStatus("Saving to GitHub...", "info");
+
+                    // Get current file SHA for update
+                    const getShaUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filename}?ref=${GITHUB_BRANCH}`;
+                    let sha = null;
+
+                    try {
+                        const shaResponse = await fetch(getShaUrl, {
+                            headers: { Authorization: `token ${token}` },
+                        });
+                        if (shaResponse.ok) {
+                            const shaData = await shaResponse.json();
+                            sha = shaData.sha;
+                        }
+                    } catch (e) {
+                        // File doesn't exist yet, that's fine
                     }
-                } catch (e) {
-                    // File doesn't exist yet, that's fine
+
+                    // Commit file
+                    const commitUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filename}`;
+                    const commitData = {
+                        message: `Update resume variant: ${variantName}`,
+                        content: btoa(fileContent), // base64 encode
+                        branch: GITHUB_BRANCH,
+                    };
+
+                    if (sha) commitData.sha = sha;
+
+                    const commitResponse = await fetch(commitUrl, {
+                        method: "PUT",
+                        headers: {
+                            Authorization: `token ${token}`,
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(commitData),
+                    });
+
+                    if (commitResponse.ok) {
+                        showStatus(
+                            `✓ Saved as resume-${variantName}.json`,
+                            "success",
+                        );
+                        closeSaveModal();
+                        isDirty = false;
+                    } else {
+                        const error = await commitResponse.json();
+                        throw new Error(error.message || "GitHub API error");
+                    }
+                } catch (error) {
+                    showStatus(`Error saving: ${error.message}`, "error");
                 }
+            }
 
-                // Commit file
-                const commitUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filename}`;
-                const commitData = {
-                    message: `Update resume variant: ${variantName}`,
-                    content: btoa(fileContent), // base64 encode
-                    branch: GITHUB_BRANCH
-                };
+            // ──────────────────────────────────────────
+            // PRINT TO PDF
+            // ──────────────────────────────────────────
+            function printPDF() {
+                window.print();
+            }
 
-                if (sha) commitData.sha = sha;
-
-                const commitResponse = await fetch(commitUrl, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(commitData)
-                });
-
-                if (commitResponse.ok) {
-                    showStatus(`✓ Saved as resume-${variantName}.json`, 'success');
-                    closeSaveModal();
-                    isDirty = false;
-                } else {
-                    const error = await commitResponse.json();
-                    throw new Error(error.message || 'GitHub API error');
+            // ──────────────────────────────────────────
+            // HELPERS
+            // ──────────────────────────────────────────
+            function showStatus(message, type) {
+                const el = document.getElementById("statusMessage");
+                el.textContent = message;
+                el.className = `status-message ${type}`;
+                if (type !== "error") {
+                    setTimeout(() => (el.className = "status-message"), 4000);
                 }
-            } catch (error) {
-                showStatus(`Error saving: ${error.message}`, 'error');
             }
-        }
 
-        // ──────────────────────────────────────────
-        // PRINT TO PDF
-        // ──────────────────────────────────────────
-        function printPDF() {
-            window.print();
-        }
-
-        // ──────────────────────────────────────────
-        // HELPERS
-        // ──────────────────────────────────────────
-        function showStatus(message, type) {
-            const el = document.getElementById('statusMessage');
-            el.textContent = message;
-            el.className = `status-message ${type}`;
-            if (type !== 'error') {
-                setTimeout(() => el.className = 'status-message', 4000);
-            }
-        }
-
-        // Keyboard shortcut to save
-        document.addEventListener('keydown', (e) => {
-            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-                e.preventDefault();
-                openSaveModal();
-            }
-        });
-    </script>
-</body>
+            // Keyboard shortcut to save
+            document.addEventListener("keydown", (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === "s") {
+                    e.preventDefault();
+                    openSaveModal();
+                }
+            });
+        </script>
+    </body>
 </html>
